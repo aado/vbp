@@ -6,11 +6,14 @@ const os = require('os');
 
 const app = express();
 
+app.use(express.static('build'));
+
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static('dist'));
 app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username })); //os.userInfo().username
+
 
 const pusher = new Pusher({
 	appId: '590918',
