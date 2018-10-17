@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
+const os = require('os');
 
 const PORT = process.env.PORT || 5000;
 
@@ -23,6 +24,8 @@ if (cluster.isMaster) {
 
   // Priority serve any static files.
   app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
+
+  app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username }));
 
   // Answer API requests.
   app.get('/api', function (req, res) {
