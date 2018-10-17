@@ -15,7 +15,8 @@
   ],
   "dependencies": {
     "express": "^4.16.3",
-    "pusher-js": "^4.3.1"
+    "pusher-js": "^4.3.1",
+    "react": "^16.5.2"
   },
   "repository": {
     "type": "git",
