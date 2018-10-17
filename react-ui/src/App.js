@@ -6,9 +6,6 @@ import Pusher from 'pusher-js';
 import ChatList from './ChatList';
 import ChatBox from './ChatBox';
 
-
-const PORT = process.env.PORT || 5000;
-
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -64,7 +61,7 @@ class App extends Component {
 			username: this.state.username,
 			message: this.state.text
 		};
-		axios.post(`${process.pid}:${PORT}/message`, payload);
+		axios.post('/message', payload);
 	} else {
 		this.setState({ text: e.target.value });
 	}
