@@ -37,17 +37,17 @@ if (cluster.isMaster) {
     encrypted: true
   });
 
-  // Node test message
-  app.post('/message', (req, res) => {
-    const payload = req.body;
-    pusher.trigger('chat', 'message', payload);
-    res.send(payload)
-  });
-
   // Answer API requests.
   app.get('/api', function (req, res) {
     res.set('Content-Type', 'application/json');
     res.send('{"message":"Hello from the custom server!"}');
+  });
+
+   // Node test message
+   app.post('/api/message', (req, res) => {
+    const payload = req.body;
+    pusher.trigger('chat', 'message', payload);
+    res.send(payload)
   });
 
   // All remaining requests return the React app, so it can handle routing.

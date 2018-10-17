@@ -63,7 +63,7 @@ class App extends Component {
 			username: this.state.username,
 			message: this.state.text
 		};
-		axios.post('https://vbp.herokuapp.com/message', payload);
+		axios.post('http://localhost:5000/api/message', payload);
 	} else {
 		this.setState({ text: e.target.value });
 	}
