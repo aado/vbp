@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mars/heroku-cra-node.git"
+    "url": "git+https://github.com/mars/heroku-cra-node.git"
   },
   "keywords": [
     "node",
@@ -29,5 +29,11 @@
     "react"
   ],
   "license": "MIT",
-  "devDependencies": {}
+  "devDependencies": {},
+  "bugs": {
+    "url": "https://github.com/mars/heroku-cra-node/issues"
+  },
+  "homepage": "https://github.com/mars/heroku-cra-node#readme",
+  "main": "index.js",
+  "author": ""
 }
