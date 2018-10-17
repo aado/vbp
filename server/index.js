@@ -3,6 +3,7 @@ const path = require('path');
 const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 const os = require('os');
+const Pusher = require('pusher');
 
 const PORT = process.env.PORT || 5000;
 
@@ -26,6 +27,22 @@ if (cluster.isMaster) {
   app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
   app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username }));
+
+  // Pusher
+  const pusher = new Pusher({
+    appId: '590918',
+    key: '223aca0f0c8175acf4b3',
+    secret: 'fe63bf18750b70ecbb5c',
+    cluster: 'ap1',
+    encrypted: true
+  });
+
+  // Node test message
+  app.post('/message', (req, res) => {
+    const payload = req.body;
+    pusher.trigger('chat', 'message', payload);
+    res.send(payload)
+  });
 
   // Answer API requests.
   app.get('/api', function (req, res) {
