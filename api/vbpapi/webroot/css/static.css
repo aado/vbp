@@ -1,0 +1,95 @@
+    #sortable { list-style-type: none; margin: 0; padding: 0; width: 100%; }
+    #sortable li { margin: 3px 3px 100px 0; padding: 1px; float: left; width: 200px; height: 160px; font-size: 4em; text-align: center; }
+    .ui-tooltip, .arrow:after {
+        background: black;
+        border: 2px solid white;
+    }
+    .ui-tooltip {
+        padding: 10px 20px;
+        color: white;
+        border-radius: 20px;
+        font: bold 14px "Helvetica Neue", Sans-Serif;
+        box-shadow: 0 0 7px black;
+    }
+    .arrow {
+        width: 70px;
+        height: 16px;
+        overflow: hidden;
+        position: absolute;
+        left: 50%;
+        margin-left: -35px;
+        bottom: -16px;
+    }
+    .arrow.top {
+        top: -16px;
+        bottom: auto;
+    }
+    .arrow.left {
+        left: 20%;
+    }
+    .arrow:after {
+        content: "";
+        position: absolute;
+        left: 20px;
+        top: -20px;
+        width: 25px;
+        height: 25px;
+        box-shadow: 6px 5px 9px -9px black;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    .arrow.top:after {
+        bottom: -20px;
+        top: auto;
+    }
+
+    /* Pagination
+    /*================================================*/
+    ul.pagination {
+        margin: 0;
+    }
+
+    ul.pagination li {
+        list-style-type: none;
+        font-size: 1.2em;
+        display: inline;
+    }
+
+    ul.pagination li a {
+        display: block;
+        float: left;
+        padding: 2px 8px;
+        margin-right: 3px;
+        color: #777;
+    }
+
+    ul.pagination li.active {
+        font-weight: bold;
+    }
+
+    ul.pagination li span {
+        float: left; 
+        margin-right: 4px;
+    }
+
+    ul.pagination li a.page {
+        background-color: #9FA19F;
+        color: #ddd;
+        font-weight: bold;
+    }
+
+    ul.pagination li a.page:hover {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    ul.pagination li.selected a.page {
+        background-color: #545C5F;
+        color: #fff;
+    }
+
+    ul.pagination li.disabled a {
+        color: #ddd;
+        cursor: default;
+    }
