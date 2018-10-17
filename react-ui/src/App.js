@@ -6,7 +6,7 @@ import Pusher from 'pusher-js';
 import ChatList from './ChatList';
 import ChatBox from './ChatBox';
 
-baseUrl = "https://vbp.herokuapp.com/" || "http://localhost:5000"
+const baseUrl = process.env.baseURL || "http://localhost:5000"
 
 class App extends Component {
 	constructor(props) {
