@@ -44,7 +44,7 @@ if (cluster.isMaster) {
   });
 
    // Node test message
-   app.post('/api/message', (req, res) => {
+   app.post('/message', (req, res) => {
     const payload = req.body;
     pusher.trigger('chat', 'message', payload);
     res.send(payload)
