@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import Pusher from 'pusher-js';
+import ChatList from './ChatList';
+import ChatBox from './ChatBox';
 
 class App extends Component {
 	constructor(props) {
