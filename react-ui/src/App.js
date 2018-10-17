@@ -6,6 +6,8 @@ import Pusher from 'pusher-js';
 import ChatList from './ChatList';
 import ChatBox from './ChatBox';
 
+baseUrl = process.env.baseURL || "http://localhost:5000"
+
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -61,7 +63,7 @@ class App extends Component {
 			username: this.state.username,
 			message: this.state.text
 		};
-		axios.post('/message', payload);
+		axios.post(baseUrl, payload);
 	} else {
 		this.setState({ text: e.target.value });
 	}
