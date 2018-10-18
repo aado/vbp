@@ -55,17 +55,17 @@ class App extends Component {
 	this.handleTextChange = this.handleTextChange.bind(this);
   }
 
-  handleTextChange(e) {
-	if (e.keyCode === 13) {
-		const payload = {
-			username: this.state.username,
-			message: this.state.text
-		};
-		axios.post('/message', payload);
-	} else {
-		this.setState({ text: e.target.value });
+	handleTextChange(e) {
+		if (e.keyCode === 13) {
+			const payload = {
+				username: this.state.username,
+				message: this.state.text
+			};
+			axios.post('https://vbp.herokuapp.com/message', payload);
+		} else {
+			this.setState({ text: e.target.value });
+		}
 	}
-}
 
   render() {
     return (
