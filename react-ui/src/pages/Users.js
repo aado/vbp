@@ -208,7 +208,7 @@ export default class Users extends Component {
 	}
 
 	componentDidMount() {
-		$(".react-bootstrap-table table thead tr th:eq(6)").attr('width','75px');
+		// $(".react-bootstrap-table table thead tr th:eq(6)").attr('width','75px');
 		let initialClients = [];
 		let initialHeads = [];
 		let initialRoles = [];

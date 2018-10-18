@@ -206,7 +206,7 @@ export default class EditUsers extends Component {
 				<i color="success" className="fa fa-pencil-square-o text-success fa-lg" style={{'cursor':'pointer'}} onClick={this.toggle}></i>
 				<i className="fa fa-trash-o text-danger fa-lg" style={{'cursor':'pointer','marginLeft': '10px'}}></i>
 
-				{/* <Modal isOpen={this.state.modal} toggle={this.toggle} className="modal-lg container-fluid">
+				<Modal isOpen={this.state.modal} toggle={this.toggle} className="modal-lg container-fluid">
 					<ModalHeader toggle={this.toggle}>Edit User</ModalHeader>
 					<ModalBody>
 					<Form className="Aleft addUserForm" onSubmit={this.onFormEditSubmit}>
@@ -326,7 +326,7 @@ export default class EditUsers extends Component {
 					</div>
 					</Form>
 					</ModalBody>
-				</Modal> */}
+				</Modal>
             </div>
         )
     }
