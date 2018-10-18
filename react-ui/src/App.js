@@ -61,7 +61,7 @@ class App extends Component {
 			username: this.state.username,
 			message: this.state.text
 		};
-		axios.post(`http://localhost:8080/message`, payload);
+		axios.post(`http://localhost:5000/message`, payload);
 	} else {
 		this.setState({ text: e.target.value });
 	}
