@@ -43,13 +43,6 @@ if (cluster.isMaster) {
     res.send('{"message":"Hello from the custom server!"}');
   });
 
-   // Node test message
-   app.post('/message', (req, res) => {
-    const payload = req.body;
-    pusher.trigger('chat', 'message', payload);
-    res.send(payload)
-  });
-
   // All remaining requests return the React app, so it can handle routing.
   app.get('*', function(request, response) {
     response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
