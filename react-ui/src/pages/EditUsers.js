@@ -144,7 +144,7 @@ export default class EditUsers extends Component {
 		}).then(response => {
 			this.setState({open: false});
 			// this.getDataUsers();
-			location.reload();
+			// location.reload();
 			// axios.post('http://localhost:8080/users', payload);
 		}).catch(err => console.log(err));
 	}
