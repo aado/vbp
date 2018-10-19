@@ -269,7 +269,7 @@ export default class Users extends Component {
 	}
 
 	getDataUsers() {
-		fetch(`http://e8683824.ngrok.io/vbp/api/vbpapi/users/allusers`)
+		fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allusers`)
 		.then(results => {
 			return results.json();
 		}).then(data => {
