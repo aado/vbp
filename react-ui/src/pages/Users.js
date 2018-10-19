@@ -168,10 +168,17 @@ export default class Users extends Component {
 	}
 
 	addNewUser(addUser) {
+		let axiosConfig = {
+			headers: {
+				'Content-Type': 'application/json;charset=UTF-8',
+				"Access-Control-Allow-Origin": "*",
+			}
+		  };
 		axios.request({
 			method:'post',
-			url:'http://localhost:8080/vbp/api/vbpapi/users/adduser',
-			data: addUser
+			url:'https://e8683824.ngrok.io/vbp/api/vbpapi/users/adduser',
+			data: addUser,
+			axiosConfig
 		}).then(response => {
 			this.setState({open: false, modal: false});
 			const payload = {
