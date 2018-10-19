@@ -227,51 +227,51 @@ export default class Users extends Component {
 		});
 
 		//all clients
-		// fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allclients`)
-		// .then(response => {
-		// 	return response.json();
-		// }).then(data => {
-		// 	initialClients = data.map(suggestion => ({
-		// 		value: suggestion.id,
-		// 		label: suggestion.name,
-		// 	}));
-		// 	this.setState({clients: initialClients});
-		// });
+		fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allclients`)
+		.then(response => {
+			return response.json();
+		}).then(data => {
+			initialClients = data.map(suggestion => ({
+				value: suggestion.id,
+				label: suggestion.name,
+			}));
+			this.setState({clients: initialClients});
+		});
 
-		// //all heads
-		// fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allheads`)
-		// .then(response => {
-		// 	return response.json();
-		// }).then(data => {
-		// 	initialHeads = data.map(heads => ({
-		// 		value: heads.id,
-		// 		label: heads.name,
-		// 	}));
-		// 	this.setState({heads: initialHeads});
-		// });
+		//all heads
+		fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allheads`)
+		.then(response => {
+			return response.json();
+		}).then(data => {
+			initialHeads = data.map(heads => ({
+				value: heads.id,
+				label: heads.name,
+			}));
+			this.setState({heads: initialHeads});
+		});
 
-		// //all roles
-		// fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allroles`)
-		// .then(results => {
-		// 	return results.json();
-		// }).then(data => {
-		// 	initialRoles = data.map(role => ({
-		// 		value: role.id,
-		// 		label: role.name,
-		// 	}));
-		// 	this.setState({roles: initialRoles});
-		// });
+		//all roles
+		fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allroles`)
+		.then(results => {
+			return results.json();
+		}).then(data => {
+			initialRoles = data.map(role => ({
+				value: role.id,
+				label: role.name,
+			}));
+			this.setState({roles: initialRoles});
+		});
 
-		// let allUsers = [];
-		// fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allusers`)
-		// .then(response => {
-		// 	return response.json();
-		// }).then(data => {
-		// 	allUsers = data.map(user => ({
-		// 		name: user.firstname+' '+user.lastname
-		// 	}));
-		// 	this.setState({dataSet3: allUsers});
-		// });
+		let allUsers = [];
+		fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allusers`)
+		.then(response => {
+			return response.json();
+		}).then(data => {
+			allUsers = data.map(user => ({
+				name: user.firstname+' '+user.lastname
+			}));
+			this.setState({dataSet3: allUsers});
+		});
 	}
 
 	getDataUsers() {
