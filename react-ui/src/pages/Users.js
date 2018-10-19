@@ -322,7 +322,6 @@ export default class Users extends Component {
 			email: this.email.value,
 			hand_over_date: this.hand_over_date.value,
 			client: client_select.label,
-			_Token: "",
 			// compid: (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)),
 		}
 		console.log(newUser);
@@ -548,7 +547,6 @@ export default class Users extends Component {
 								<FormGroup>
 									<Label>Password</Label>
 									<Input innerRef={(e) => this.password = e}  type="text" name="password"/>
-									<Input innerRef={(e) => this.token = e} type="hidden" name="_Token[fields]" autocomplete="off" value="---HASH---" />
 								</FormGroup>
 							</Col>
 						</Row>
