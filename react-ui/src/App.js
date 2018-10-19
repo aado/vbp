@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, PrivateRoute } from 'react-router-dom';
 
 import Users from './pages/Users';
 
@@ -45,7 +45,7 @@ class App extends Component {
 				<Route exact path="/authexample" component={Authexample} />
 				<Route exact path="/tasktemplate" component={TaskTemplate} />
 				<Route exact path="/clients" component={Clients} /> */}
-				<Route exact path="/users" component={Users} />
+				<PrivateRoute exact path="/users" component={Users} />
 			</div>
 		</Router>
         <div className="App-header">
