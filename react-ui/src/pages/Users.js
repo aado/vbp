@@ -170,7 +170,7 @@ export default class Users extends Component {
 	addNewUser(addUser) {
 		axios.request({
 			method:'post',
-			url:'http://localhost/vbp/api/vbpapi/users/adduser',
+			url:'https://e8683824.ngrok.io/vbp/api/vbpapi/users/adduser',
 			data: addUser
 		}).then(response => {
 			this.setState({open: false, modal: false});
@@ -221,7 +221,7 @@ export default class Users extends Component {
 		});
 
 		//all clients
-		fetch(`http://localhost/vbp/api/vbpapi/users/allclients`)
+		fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allclients`)
 		.then(response => {
 			return response.json();
 		}).then(data => {
@@ -233,7 +233,7 @@ export default class Users extends Component {
 		});
 
 		//all heads
-		fetch(`http://localhost/vbp/api/vbpapi/users/allheads`)
+		fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allheads`)
 		.then(response => {
 			return response.json();
 		}).then(data => {
@@ -245,7 +245,7 @@ export default class Users extends Component {
 		});
 
 		//all roles
-		fetch(`http://localhost/vbp/api/vbpapi/users/allroles`)
+		fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allroles`)
 		.then(results => {
 			return results.json();
 		}).then(data => {
@@ -257,7 +257,7 @@ export default class Users extends Component {
 		});
 
 		let allUsers = [];
-		fetch(`http://localhost/vbp/api/vbpapi/users/allusers`)
+		fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allusers`)
 		.then(response => {
 			return response.json();
 		}).then(data => {
