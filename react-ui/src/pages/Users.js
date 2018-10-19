@@ -170,7 +170,7 @@ export default class Users extends Component {
 	addNewUser(addUser) {
 		axios.request({
 			method:'post',
-			url:'https://e8683824.ngrok.io/vbp/api/vbpapi/users/adduser',
+			url:'http://e8683824.ngrok.io/vbp/api/vbpapi/users/adduser',
 			data: addUser
 		}).then(response => {
 			this.setState({open: false, modal: false});
@@ -322,7 +322,6 @@ export default class Users extends Component {
 			hand_over_date: this.hand_over_date.value,
 			client: client_select.label,
 		}
-		console.log(newUser);
 		this.addNewUser(newUser);
 	}
 
@@ -544,8 +543,6 @@ export default class Users extends Component {
 								</FormGroup>
 							</Col>
 						</Row>
-						
-						{/* <Input innerRef={(e) => this.compid = e} type="text" name="compid" style={{display: 'none'}}/> */}
 					<div className="modal-footer">
 					<Button color="success" type="submit">Save & Exit</Button>
 					<Button color="secondary" onClick={this.toggle}>Cancel</Button>
