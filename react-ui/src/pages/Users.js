@@ -208,7 +208,6 @@ export default class Users extends Component {
 	}
 
 	componentDidMount() {
-		// $(".react-bootstrap-table table thead tr th:eq(6)").attr('width','75px');
 		let initialClients = [];
 		let initialHeads = [];
 		let initialRoles = [];
@@ -338,7 +337,8 @@ export default class Users extends Component {
 				text: 'Name',
 				sort: true,
 				formatter: this.getName
-			},{
+			},
+			{
 				dataField: 'access_type',
 				text: 'Access Type',
 				sort: true,
@@ -346,8 +346,8 @@ export default class Users extends Component {
 					type: Type.SELECT,
 					options: accessTypes
 				}
-			}
-			,{
+			},
+			{
 				dataField: 'role',
 				text: 'Role',
 				sort: true,
@@ -372,9 +372,7 @@ export default class Users extends Component {
 				text: 'Action',
 				formatter: this.editAction
 			}
-			
 		];
-		const { isLoading } = this.state;
 		const { selectedOption } = this.state;
 		const { selectedOptionHead } = this.state;
 		const { selectedOptionRole } = this.state;
@@ -387,10 +385,7 @@ export default class Users extends Component {
 						<div className="page-header  no-margin-bottom Aleft">
 							<div className="container-fluid">
 								<div className="h5 no-margin-bottom">
-									<h2>Users <Button color="success" onClick={this.toggle}><i className="fa fa-plus"></i> Add User</Button>
-									{/* <button className="btn btn-success" onClick={this.handleClickOpen('body')}> <i className="fa fa-plus"></i> &nbsp; Add User </button> */}
-									</h2>  
-								
+									<h2>Users <Button color="success" onClick={this.toggle}><i className="fa fa-plus"></i> Add User</Button></h2>  
 								</div>
 							</div>
 						</div><br />
@@ -418,7 +413,6 @@ export default class Users extends Component {
 													defaultSorted={ defaultSorted } 
 													pagination={ paginationFactory(options) }
 													filter={ filterFactory() }
-													cellEdit={ cellEditFactory({ mode: 'dbclick' }) }
 													{ ...props.baseProps }
 													></BootstrapTable>
 													<div>
