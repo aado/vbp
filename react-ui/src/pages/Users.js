@@ -172,6 +172,9 @@ export default class Users extends Component {
 			headers: {
 				'Content-Type': 'application/json;charset=UTF-8',
 				"Access-Control-Allow-Origin": "*",
+				'accept': 'application/json',
+                'accept-language': 'en_US',
+                'content-type': 'application/x-www-form-urlencoded'
 			}
 		  };
 		axios.request({
