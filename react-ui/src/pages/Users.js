@@ -322,7 +322,7 @@ export default class Users extends Component {
 			email: this.email.value,
 			hand_over_date: this.hand_over_date.value,
 			client: client_select.label,
-			_Token: this._Token.value
+			_Token: ""
 			// compid: (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)),
 		}
 		console.log(newUser);
