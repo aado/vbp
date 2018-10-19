@@ -176,7 +176,7 @@ export default class Users extends Component {
 		  };
 		axios.request({
 			method:'post',
-			url:'https://e8683824.ngrok.io/vbp/api/vbpapi/users/adduser',
+			url:'http://localhost/vbp/api/vbpapi/users/adduser',
 			data: addUser,
 			axiosConfig
 		}).then(response => {
