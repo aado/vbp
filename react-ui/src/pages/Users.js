@@ -431,7 +431,7 @@ export default class Users extends Component {
 											onChange={e => this.setState({ text: e.target.value})}
 											value={this.state.text}
 											onKeyPress={this.onSubmit}
-											margin="normal"
+											fullWidth
 										/>
 										<div className="block margin-bottom-sm">
 										<ToolkitProvider
