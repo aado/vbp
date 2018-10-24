@@ -368,7 +368,7 @@ h2, .h2, h5, .modal-title {
 	margin: -10px; 
   }
 
-  .MuiInputBase-input-42 {
+.MuiInputBase-input-42 {
     font: inherit;
     width: 100%;
     color: currentColor;
@@ -381,6 +381,29 @@ h2, .h2, h5, .modal-title {
     background: none;
     -webkit-tap-highlight-color: transparent;
     color: white !important;
+}
+
+.jss42 {
+    font: inherit;
+    width: 100%;
+    color: currentColor;
+    border: 0;
+    margin: 0;
+    padding: 6px 0 7px;
+    display: block;
+    min-width: 0;
+    box-sizing: content-box;
+    background: none;
+    -webkit-tap-highlight-color: transparent;
+    color: white !important;
+}
+
+.jss6 {
+    top: 0;
+    left: 0;
+    position: absolute;
+    transform: translate(0, 24px) scale(1);
+    color: gray !important;
 }
 
 .MuiInputLabel-formControl-6 {
