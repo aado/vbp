@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Pusher from 'pusher-js';
-import './components/css/custom.css';
 import Select from 'react-select';
-import CsvIcon from './components/csv.png';
-import {CSVLink} from 'react-csv';
-import BootstrapTable, { TableHeaderColumn } from 'react-bootstrap-table-next';
-import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+// import { CSVLink } from 'react-csv';
+import TextField from '@material-ui/core/TextField';
+import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
-import filterFactory, { textFilter, selectFilter, dateFilter } from 'react-bootstrap-table2-filter';
-import cellEditFactory, { Type } from 'react-bootstrap-table2-editor';
+import filterFactory from 'react-bootstrap-table2-filter';
+import { Type } from 'react-bootstrap-table2-editor';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button, FormGroup, Label, Input, Row, Col, TabContent, Alert, TabPane, Nav, NavItem, NavLink, Table, ControlLabel, FormControl, Form } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, Button, FormGroup, Label, Input, Row, Col, Form } from 'reactstrap';
 import EditUsers from './EditUsers';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import firebase from 'firebase';
+
+import './components/css/custom.css';
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+// import CsvIcon from './components/csv.png';
 
 const socket = new Pusher('223aca0f0c8175acf4b3', {
 	cluster: 'ap1',
@@ -89,9 +92,9 @@ const department = [
 	}
 ];
 
-const headers = [
-	{label: 'Name', key: 'name'},
-  ];
+// const headers = [
+// 	{label: 'Name', key: 'name'},
+//   ];
 
 const defaultSorted = [{
 	dataField: 'firstname',
@@ -135,36 +138,20 @@ export default class Users extends Component {
 		super(props);
 
 		this.state = {
-			isLoading: false,
-			show: false,
-			divWidth: false,
-			modalShow: false,
-			addedNew: false,
-			selectedFile: null,
 			open: false,
-			results:[],
 			realUsers:[],
-			users:[],
-			countries: [],
 			roles:[],
 			heads:[],
-			allusers:[],
-			companies: [],
 			clients:[],
-			scroll: 'paper',
-			street_type: '',
-			country: '',
 			selectedOption: null,
 			selectedOptionHead: null,
 			selectedOptionRole: null,
 			dataSet3:[],
 			usersData:[],
-			client: null,
-			value: '',
-			modal: false
+			modal: false,
+			text:'',
+			messages: []
 		};
-
-		this.handleHide = this.handleHide.bind(this);
 	}
 
 	addNewUser(addUser) {
@@ -179,7 +166,7 @@ export default class Users extends Component {
 		  };
 		axios.request({
 			method:'post',
-			url:'http://localhost/vbp/api/vbpapi/users/adduser',
+			url:'http://localhost/vbpapi/users/adduser',
 			data: addUser,
 			axiosConfig
 		}).then(response => {
@@ -201,28 +188,24 @@ export default class Users extends Component {
 		}).catch(err => console.log(err));
 	}
 
-	handleClickOpen = scroll => () => {
-		this.setState({ open: true, scroll });
-	};
-
-	handleClose = () => {
-		this.setState({ open: false });
-	};
-
-	handleClickOpenEdit = scroll => (e) => {
-		this.setState({ open: true, scroll });
-	};
-
-	handleHide() {
-		this.setState({modalShow: false});
-	}
-
 	componentDidMount() {
+
+		  // Initialize Firebase
+		  var config = {
+			apiKey: "AIzaSyA92xFCSEknowHMXiWBcz1OS8TdV-pK_iA",
+			authDomain: "vbpproject-33765.firebaseapp.com",
+			databaseURL: "https://vbpproject-33765.firebaseio.com",
+			projectId: "vbpproject-33765",
+			storageBucket: "vbpproject-33765.appspot.com",
+			messagingSenderId: "131081195693"
+		  };
+		  firebase.initializeApp(config);
+		  this.getMessages();
+
 		let initialClients = [];
 		let initialHeads = [];
 		let initialRoles = [];
-
-		this.setState( { isLoading: true });
+		
 		this.getDataUsers();
 		const channel = socket.subscribe('user');
 		channel.bind('users', (data) => {
@@ -230,7 +213,7 @@ export default class Users extends Component {
 		});
 
 		//all clients
-		fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allclients`)
+		fetch(`http://localhost/vbpapi/users/allclients`)
 		.then(response => {
 			return response.json();
 		}).then(data => {
@@ -242,7 +225,7 @@ export default class Users extends Component {
 		});
 
 		//all heads
-		fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allheads`)
+		fetch(`http://localhost/vbpapi/users/allheads`)
 		.then(response => {
 			return response.json();
 		}).then(data => {
@@ -254,7 +237,7 @@ export default class Users extends Component {
 		});
 
 		//all roles
-		fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allroles`)
+		fetch(`http://localhost/vbpapi/users/allroles`)
 		.then(results => {
 			return results.json();
 		}).then(data => {
@@ -266,7 +249,7 @@ export default class Users extends Component {
 		});
 
 		let allUsers = [];
-		fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allusers`)
+		fetch(`http://localhost/vbpapi/users/allusers`)
 		.then(response => {
 			return response.json();
 		}).then(data => {
@@ -278,14 +261,16 @@ export default class Users extends Component {
 	}
 
 	getDataUsers() {
-		fetch(`https://e8683824.ngrok.io/vbp/api/vbpapi/users/allusers`)
+		fetch('http://localhost/vbpapi/users/allusers')
 		.then(results => {
 			return results.json();
 		}).then(data => {
+			console.log(data);
 			this.setState({usersData:data});
 		});
 	}
 
+	
 	handleChange = (selectedOption) => {
 		this.setState({ selectedOption });
 	}
@@ -335,8 +320,44 @@ export default class Users extends Component {
 		this.addNewUser(newUser);
 	}
 
+	onSubmit = (event) => {
+		if(event.charCode === 13 && this.state.text.trim() !== "") {
+			this.writeMessageToDB(this.state.text);
+			this.setState({text: ""});
+			// console.log(this.state.text);
+		}
+	}
+
+	getMessages = () => {
+		const messageDB = firebase.database().ref("messages/")
+		messageDB.on("value", snapshot => {
+			let newMessages = []
+			snapshot.forEach(child => {
+				const message = child.val()
+				newMessages.push({ id: child.key, text: message.text })
+			})
+			this.setState({ messages: newMessages})
+		})
+	}
+
+
+	writeMessageToDB = (message) => {
+		firebase
+		.database()
+		.ref("messages/")
+		.push( {
+			text: message
+		})
+	}
+
 	handleChange = (selectedOption) => {
 		this.setState({ selectedOption });
+	}
+
+	renderMessages = () => {
+		return this.state.messages.map(message => (
+			<div>{message.text}</div>
+		))
 	}
 
     render() {
@@ -382,9 +403,7 @@ export default class Users extends Component {
 				formatter: this.editAction
 			}
 		];
-		const { selectedOption } = this.state;
-		const { selectedOptionHead } = this.state;
-		const { selectedOptionRole } = this.state;
+		const { selectedOption, selectedOptionHead, selectedOptionRole } = this.state;
         return (
 			<div>
 				<Header />
@@ -398,10 +417,22 @@ export default class Users extends Component {
 								</div>
 							</div>
 						</div><br />
+						{this.renderMessages()}
 						<section className="no-padding-top">
 							<div className="container-fluid">
 								<div className="row Aleft">
 									<div className='col-lg-12'>
+									
+										<TextField
+											id="standard-name"
+											label="Name"
+											placeholder="type something"
+											value={this.state.name}
+											onChange={e => this.setState({ text: e.target.value})}
+											value={this.state.text}
+											onKeyPress={this.onSubmit}
+											margin="normal"
+										/>
 										<div className="block margin-bottom-sm">
 										<ToolkitProvider
 											keyField="id"
@@ -425,9 +456,9 @@ export default class Users extends Component {
 													{ ...props.baseProps }
 													></BootstrapTable>
 													<div>
-														<CSVLink filename={"users.csv"} data={this.state.dataSet3} headers={headers}>
+														{/* <CSVLink filename={"users.csv"} data={this.state.dataSet3} headers={headers}>
 															<img src={CsvIcon} className="img-responsive avatar" alt="logo" className="imgExportCSV2"/>
-														</CSVLink>
+														</CSVLink> */}
 													</div>
 												</div>
 												)
@@ -549,7 +580,7 @@ export default class Users extends Component {
 								<FormGroup>
 									<Label>Password</Label>
 									<Input innerRef={(e) => this.password = e}  type="text" name="password"/>
-									<Input type="hidden" name="_Token[fields]" onBlur = {(e) => this.password = e} autocomplete="off" value="---HASH---" />
+									<Input type="hidden" name="_Token[fields]" onBlur = {(e) => this.password = e} autoComplete="off" value="---HASH---" />
 								</FormGroup>
 							</Col>
 						</Row>

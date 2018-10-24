@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Pusher from 'pusher-js';
+// import Pusher from 'pusher-js';
 import './components/css/custom.css';
 import Select from 'react-select';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import { Modal, ModalHeader, ModalBody, Button, FormGroup, Label, Input, Row, Col, Form } from 'reactstrap';
 
-const socket = new Pusher('223aca0f0c8175acf4b3', {
-	cluster: 'ap1',
-	encrypted: true
-});
+// const socket = new Pusher('223aca0f0c8175acf4b3', {
+// 	cluster: 'ap1',
+// 	encrypted: true
+// });
 
 const accessTypes = [
 	{
@@ -139,7 +139,7 @@ export default class EditUsers extends Component {
 		const rowValue = this.props.row;
 		axios.request({
 			method:'post',
-			url:'http://localhost/vbptimetaskmanagement/api/vbpapi/users/edituser/'+rowValue.id,
+			url:'http://localhost/vbpapi/users/edituser/'+rowValue.id,
 			data: usersVal
 		}).then(response => {
 			this.setState({open: false});
@@ -200,7 +200,7 @@ export default class EditUsers extends Component {
 		const { selectedOptionClient } = this.state;
 		const { selectedOptionRole } = this.state;
 		const { selectedOptionHead } = this.state;
-		const { cell, row, rowIndex } = this.props;
+		const { row } = this.props; //cell, , rowIndex 
         return (
             <div>
 				<i color="success" className="fa fa-pencil-square-o text-success fa-lg" style={{'cursor':'pointer'}} onClick={this.toggle}></i>
