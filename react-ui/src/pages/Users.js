@@ -426,7 +426,6 @@ export default class Users extends Component {
 										<TextField
 											id="standard-name"
 											label="Type Your Message"
-											placeholder="type something"
 											value={this.state.name}
 											onChange={e => this.setState({ text: e.target.value})}
 											value={this.state.text}
