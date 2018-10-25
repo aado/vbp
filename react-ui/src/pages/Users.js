@@ -346,7 +346,8 @@ export default class Users extends Component {
 		.database()
 		.ref("messages/")
 		.push( {
-			text: message
+			text: message,
+			title: 'test'
 		})
 	}
 
