@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -48,21 +48,21 @@ class App extends Component {
 				<Route exact path="/users" component={Users} />
 			</div>
 		</Router>
-        <div className="App-header">
+        {/* <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to VBP</h2>
         </div>
-        <p className="App-intro">
+        <p className="App-intro"> */}
           {'This is '}
           {/* <a href="https://github.com/mars/heroku-cra-node">
             {'create-react-app with a custom Node/Express server'}
           </a><br/> */}
-        </p>
+        {/* </p>
         <p className="App-intro">
           {this.state.fetching
             ? 'Fetching message from API'
             : this.state.message}
-        </p>
+        </p> */}
       </div>
     );
   }
