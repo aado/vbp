@@ -29,13 +29,13 @@ if (cluster.isMaster) {
   // app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username })); ///sdfsdffsdfsdf
 
   // Pusher
-  const pusher = new Pusher({
-    appId: '590918',
-    key: '223aca0f0c8175acf4b3',
-    secret: 'fe63bf18750b70ecbb5c',
-    cluster: 'ap1',
-    encrypted: true
-  });
+  // const pusher = new Pusher({
+  //   appId: '590918',
+  //   key: '223aca0f0c8175acf4b3',
+  //   secret: 'fe63bf18750b70ecbb5c',
+  //   cluster: 'ap1',
+  //   encrypted: true
+  // });
 
   // Answer API requests.
   app.get('/api', function (req, res) {

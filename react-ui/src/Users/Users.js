@@ -209,6 +209,7 @@ export default class Users extends Component {
 	}
 
 	componentDidMount() {
+
 		  // Initialize Firebase
 		  this.getMessages();
 		  this.getUsersRealtime();

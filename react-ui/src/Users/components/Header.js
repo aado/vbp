@@ -1,56 +1,19 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './css/custom.css';
 import logo from './vbplogo.png';
 import logohead from './vbplogohead.png';
-import { Button } from 'reactstrap';
-import app from "../../base";
 
 export default class Header extends Component {
     constructor(props) {
 		super(props);
-		this.state = { username: '' };
+		this.state = { username: null };
 	  }
 	
 	componentDidMount() {
 	// fetch('/api/getUsername')
 	// 	.then(res => res.json())
-    // 	.then(user => this.setState({ username: user.username }));
-    app.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          // User is signed in.
-        //   var displayName = user.displayName;
-        
-        
-        var email = user.email;
-        var emailVal = document.getElementById("userName");
-        var text = document.createTextNode(email);
-        emailVal.appendChild(text);
-
-        // document.getElementById('userName').text = email;
-        //   console.log(email);
-          
-        //   var email = user.email;
-        //   var emailVerified = user.emailVerified;
-        //   var photoURL = user.photoURL;
-        //   var isAnonymous = user.isAnonymous;
-        //   var providerData = user.providerData;
-          // ...
-        } else {
-            this.props.history.push("/login");
-          // User is signed out.
-          // ...
-        }
-      });
-    }
-    
-	signOutUser = async () => {
-		try {
-			await app.auth().signOut();
-			this.props.history.push("/login");
-		} catch (e) {
-			console.log(e);
-		}
+	// 	.then(user => this.setState({ username: user.username }));
 	}
     
 render() {
@@ -80,9 +43,8 @@ render() {
                 <div className="list-inline-item logout">
                     <div className="sidebar-header d-flex align-items-center">
                         <div className="avatar" style={{right: '65px',position: 'absolute'}}>
-                            <span style={{'color':'#95C53D'}} id="userName" style={{marginRight: '5px'}}></span>
-                            <Button title="logout" onClick={() => this.signOutUser()} >logout</Button>
-                        </div>
+                            <img src="https://d19m59y37dris4.cloudfront.net/dark-admin/1-4-4/img/avatar-6.jpg" alt="..." className="img-fluid rounded-circle" style={{'height': '20px'}}/>&nbsp;<span style={{'color':'#95C53D'}}>{this.state.username}</span>
+                        </div><Link id="logout" to="/login" className="nav-link"><i className="icon-logout"></i></Link>
                     </div>
                    
                 </div>
