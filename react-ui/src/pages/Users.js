@@ -26,13 +26,13 @@ const socket = new Pusher('223aca0f0c8175acf4b3', {
 });
 
 
-const config = {
-	apiKey: "AIzaSyA92xFCSEknowHMXiWBcz1OS8TdV-pK_iA",
-	authDomain: "vbpproject-33765.firebaseapp.com",
-	databaseURL: "https://vbpproject-33765.firebaseio.com",
-	projectId: "vbpproject-33765",
-	storageBucket: "vbpproject-33765.appspot.com",
-	messagingSenderId: "131081195693"
+var config = {
+    apiKey: "AIzaSyBGwqX1yjRmCIr-u8O1DLaSIjS29aZr8ys",
+    authDomain: "adovin-d722f.firebaseapp.com",
+    databaseURL: "https://adovin-d722f.firebaseio.com",
+    projectId: "adovin-d722f",
+    storageBucket: "adovin-d722f.appspot.com",
+    messagingSenderId: "999604746437"
   };
 
   firebase.initializeApp(config);
