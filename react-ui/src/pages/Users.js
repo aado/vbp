@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
-import Pusher from 'pusher-js';
+// import Pusher from 'pusher-js';
 import Select from 'react-select';
 // import { CSVLink } from 'react-csv';
 // import TextField from '@material-ui/core/TextField';
@@ -20,10 +20,10 @@ import './components/css/custom.css';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 // import CsvIcon from './components/csv.png';
 
-const socket = new Pusher('223aca0f0c8175acf4b3', {
-	cluster: 'ap1',
-	encrypted: true
-});
+// const socket = new Pusher('223aca0f0c8175acf4b3', {
+// 	cluster: 'ap1',
+// 	encrypted: true
+// });
 
 
 var config = {
@@ -212,72 +212,72 @@ export default class Users extends Component {
 		  this.getMessages();
 		  this.getUsersRealtime();
 
-		let initialClients = [];
-		let initialHeads = [];
-		let initialRoles = [];
+		// let initialClients = [];
+		// let initialHeads = [];
+		// let initialRoles = [];
 		
-		this.getDataUsers();
-		const channel = socket.subscribe('user');
-		channel.bind('users', (data) => {
-			this.setState({ realUsers: [...this.state.realUsers, data]});
-		});
+		// this.getDataUsers();
+		// const channel = socket.subscribe('user');
+		// channel.bind('users', (data) => {
+		// 	this.setState({ realUsers: [...this.state.realUsers, data]});
+		// });
 
-		//all clients
-		fetch(`http://13.229.172.162/vbpapi/users/allclients`)
-		.then(response => {
-			return response.json();
-		}).then(data => {
-			initialClients = data.map(suggestion => ({
-				value: suggestion.id,
-				label: suggestion.name,
-			}));
-			this.setState({clients: initialClients});
-		});
+		// //all clients
+		// fetch(`http://13.229.172.162/vbpapi/users/allclients`)
+		// .then(response => {
+		// 	return response.json();
+		// }).then(data => {
+		// 	initialClients = data.map(suggestion => ({
+		// 		value: suggestion.id,
+		// 		label: suggestion.name,
+		// 	}));
+		// 	this.setState({clients: initialClients});
+		// });
 
-		//all heads
-		fetch(`http://13.229.172.162/vbpapi/users/allheads`)
-		.then(response => {
-			return response.json();
-		}).then(data => {
-			initialHeads = data.map(heads => ({
-				value: heads.id,
-				label: heads.name,
-			}));
-			this.setState({heads: initialHeads});
-		});
+		// //all heads
+		// fetch(`http://13.229.172.162/vbpapi/users/allheads`)
+		// .then(response => {
+		// 	return response.json();
+		// }).then(data => {
+		// 	initialHeads = data.map(heads => ({
+		// 		value: heads.id,
+		// 		label: heads.name,
+		// 	}));
+		// 	this.setState({heads: initialHeads});
+		// });
 
-		//all roles
-		fetch(`http://13.229.172.162/vbpapi/users/allroles`)
-		.then(results => {
-			return results.json();
-		}).then(data => {
-			initialRoles = data.map(role => ({
-				value: role.id,
-				label: role.name,
-			}));
-			this.setState({roles: initialRoles});
-		});
+		// //all roles
+		// fetch(`http://13.229.172.162/vbpapi/users/allroles`)
+		// .then(results => {
+		// 	return results.json();
+		// }).then(data => {
+		// 	initialRoles = data.map(role => ({
+		// 		value: role.id,
+		// 		label: role.name,
+		// 	}));
+		// 	this.setState({roles: initialRoles});
+		// });
 
-		let allUsers = [];
-		fetch(`http://13.229.172.162/vbpapi/users/allusers`)
-		.then(response => {
-			return response.json();
-		}).then(data => {
-			allUsers = data.map(user => ({
-				name: user.firstname+' '+user.lastname
-			}));
-			this.setState({dataSet3: allUsers});
-		});
+		// let allUsers = [];
+		// fetch(`http://13.229.172.162/vbpapi/users/allusers`)
+		// .then(response => {
+		// 	return response.json();
+		// }).then(data => {
+		// 	allUsers = data.map(user => ({
+		// 		name: user.firstname+' '+user.lastname
+		// 	}));
+		// 	this.setState({dataSet3: allUsers});
+		// });
 	}
 
-	getDataUsers() {
-		fetch('http://13.229.172.162/vbpapi/users/allusers')
-		.then(results => {
-			return results.json();
-		}).then(data => {
-			this.setState({usersData:data});
-		});
-	}
+	// getDataUsers() {
+	// 	fetch('http://13.229.172.162/vbpapi/users/allusers')
+	// 	.then(results => {
+	// 		return results.json();
+	// 	}).then(data => {
+	// 		this.setState({usersData:data});
+	// 	});
+	// }
 
 	
 	handleChange = (selectedOption) => {
