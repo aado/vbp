@@ -55,7 +55,7 @@ class App extends Component {
           <h2>Welcome to VBP</h2>
         </div>
         <p className="App-intro"> */}
-          {'This is '}
+          {/* {'This is '} */}
           {/* <a href="https://github.com/mars/heroku-cra-node">
             {'create-react-app with a custom Node/Express server'}
           </a><br/> */}

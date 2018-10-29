@@ -7,8 +7,8 @@ import Select from 'react-select';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 // import filterFactory from 'react-bootstrap-table2-filter';
-import { Type } from 'react-bootstrap-table2-editor';
-import { Search } from 'react-bootstrap-table2-toolkit'; //ToolkitProvider, 
+// import { Type } from 'react-bootstrap-table2-editor';
+// import { Search } from 'react-bootstrap-table2-toolkit'; //ToolkitProvider, 
 import { Modal, ModalHeader, ModalBody, Button, FormGroup, Label, Input, Row, Col, Form } from 'reactstrap';
 import EditUsers from './EditUsers';
 import EditRealUsers from './EditRealUsers';
@@ -324,19 +324,19 @@ export default class Users extends Component {
 
 	onFormAddSubmit = (e) => {
 		e.preventDefault();
-		const role_select = this.state.selectedOptionRole;
-		const head_select = this.state.selectedOptionHead;
-		const client_select = this.state.selectedOption;
+		// const role_select = this.state.selectedOptionRole;
+		// const head_select = this.state.selectedOptionHead;
+		// const client_select = this.state.selectedOption;
 		const newUser = {
 			firstname: this.firstname.value,
 			lastname: this.lastname.value,
 			access_type: this.access_type.value,
-			role: role_select.label,
-			direct_head: head_select.label,
+			role: "role_select.label",
+			direct_head: "head_select.label",
 			department: this.department.value,
 			email: this.email.value,
 			hand_over_date: this.hand_over_date.value,
-			client: client_select.label,
+			client: "client_select.label",
 		}
 		this.addNewUser(newUser);
 	}
