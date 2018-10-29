@@ -26,7 +26,7 @@ if (cluster.isMaster) {
   // Priority serve any static files.
   app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
-  app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username }));
+  // app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username })); ///sdfsdffsdfsdf
 
   // Pusher
   const pusher = new Pusher({

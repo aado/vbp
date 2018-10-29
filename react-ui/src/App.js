@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Users from './pages/Users';
+// import Clients from './pages/Clients';
 
 class App extends Component {
 	constructor(props) {
@@ -44,7 +45,8 @@ class App extends Component {
 				{/* <Route exact path="/login" component={Login} />
 				<Route exact path="/authexample" component={Authexample} />
 				<Route exact path="/tasktemplate" component={TaskTemplate} />
-				<Route exact path="/clients" component={Clients} /> */}
+        */}
+        {/* <Route exact path="/clients" component={Clients} />  */}
 				<Route exact path="/users" component={Users} />
 			</div>
 		</Router>

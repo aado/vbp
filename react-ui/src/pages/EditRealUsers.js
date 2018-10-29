@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 // import Pusher from 'pusher-js';
 import './components/css/custom.css';
 import Select from 'react-select';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import { Modal, ModalHeader, ModalBody, Button, FormGroup, Label, Input, Row, Col, Form } from 'reactstrap';
+import firebase from 'firebase';
 
 // const socket = new Pusher('223aca0f0c8175acf4b3', {
 // 	cluster: 'ap1',
@@ -88,7 +89,8 @@ export default class EditUsers extends Component {
 			roles: [],
 			heads:[],
 			clients: [],
-			usersData: []
+			usersData: [],
+			modal: false
 		}
 	}
 	
@@ -137,16 +139,42 @@ export default class EditUsers extends Component {
 
 	EditUser(usersVal) {
 		const rowValue = this.props.row;
-		axios.request({
-			method:'post',
-			url:'http://13.229.172.162/vbpapi/users/edituser/'+rowValue.id,
-			data: usersVal
-		}).then(response => {
-			this.setState({open: false});
-			// this.getDataUsers();
-			// location.reload();
-			// axios.post('http://localhost:8080/users', payload);
-		}).catch(err => console.log(err));
+		// axios.request({
+		// 	method:'post',
+		// 	url:'http://13.229.172.162/vbpapi/users/edituser/'+rowValue.id,
+		// 	data: usersVal
+		// }).then(response => {
+		// 	this.setState({open: false});
+		// 	// this.getDataUsers();
+		// 	// location.reload();
+		// 	// axios.post('http://localhost:8080/users', payload);
+		// }).catch(err => console.log(err));
+
+		// firebase
+		// .database()
+		// .ref("users/")
+		// .push( {
+		// 	firstname: this.firstname.value,
+		// 	lastname: this.lastname.value,
+		// 	access_type: this.access_type.value,
+		// 	role: role_select.label,
+		// 	direct_head: head_select.label,
+		// 	department: this.department.value,
+		// 	email: this.email.value,
+		// 	hand_over_date: this.hand_over_date.value,
+		// 	client: client_select.label,
+		// })
+
+		let ref = firebase.database().ref('users/');
+		return ref
+		.child(rowValue.id)
+		.update(usersVal)
+		.then(() => ref.once('value'))
+		.then(snapshot => snapshot.val())
+		.catch(error => ({
+			errorCode: error.code,
+			errorMessage: error.message
+		}));
 	}
 
 	getDataUsers() {

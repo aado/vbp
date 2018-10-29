@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import Pusher from 'pusher-js';
 import Select from 'react-select';
 // import { CSVLink } from 'react-csv';
-import TextField from '@material-ui/core/TextField';
+// import TextField from '@material-ui/core/TextField';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
-import filterFactory from 'react-bootstrap-table2-filter';
+// import filterFactory from 'react-bootstrap-table2-filter';
 import { Type } from 'react-bootstrap-table2-editor';
-import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
+import { Search } from 'react-bootstrap-table2-toolkit'; //ToolkitProvider, 
 import { Modal, ModalHeader, ModalBody, Button, FormGroup, Label, Input, Row, Col, Form } from 'reactstrap';
 import EditUsers from './EditUsers';
+import EditRealUsers from './EditRealUsers';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import firebase from 'firebase';
@@ -24,7 +25,18 @@ const socket = new Pusher('223aca0f0c8175acf4b3', {
 	encrypted: true
 });
 
-const { SearchBar } = Search;
+
+const config = {
+	apiKey: "AIzaSyA92xFCSEknowHMXiWBcz1OS8TdV-pK_iA",
+	authDomain: "vbpproject-33765.firebaseapp.com",
+	databaseURL: "https://vbpproject-33765.firebaseio.com",
+	projectId: "vbpproject-33765",
+	storageBucket: "vbpproject-33765.appspot.com",
+	messagingSenderId: "131081195693"
+  };
+
+  firebase.initializeApp(config);
+// const { SearchBar } = Search;
 
 const accessTypes = [
 	{
@@ -96,10 +108,10 @@ const department = [
 // 	{label: 'Name', key: 'name'},
 //   ];
 
-const defaultSorted = [{
-	dataField: 'firstname',
-	order: 'asc'
-}];
+// const defaultSorted = [{
+// 	dataField: 'firstname',
+// 	order: 'asc'
+// }];
 
 const customTotal = (from, to, size) => (
 	<span className="react-bootstrap-table-pagination-total">
@@ -150,57 +162,55 @@ export default class Users extends Component {
 			usersData:[],
 			modal: false,
 			text:'',
-			messages: []
+			messages: [],
+			realtimeusers: []
 		};
 	}
 
 	addNewUser(addUser) {
-		let axiosConfig = {
-			headers: {
-				'Content-Type': 'application/json;charset=UTF-8',
-				"Access-Control-Allow-Origin": "*",
-				'accept': 'application/json',
-                'accept-language': 'en_US',
-                'content-type': 'application/x-www-form-urlencoded'
-			}
-		  };
-		axios.request({
-			method:'post',
-			url:'http://localhost/vbpapi/users/adduser',
-			data: addUser,
-			axiosConfig
-		}).then(response => {
-			this.setState({open: false, modal: false});
-			const payload = {
-				firstname: this.state.firstname,
-				lastname: this.state.lastname,
-				access_type: this.state.access_type,
-				role: this.state.role,
-				allroles: this.state.roles,
-				head: this.state.direct_head,
-				allheads: this.state.heads,
-				department: this.state.department,
-				email: this.state.email,
-				hand_over_date: this.state.hand_over_date
-			};
-			this.getDataUsers();
-			axios.post('http://localhost:8080/users', payload);
-		}).catch(err => console.log(err));
+		firebase
+		.database()
+		.ref("users/")
+		.push( addUser )
+		this.setState({modal: false});
+		// let axiosConfig = {
+		// 	headers: {
+		// 		'Content-Type': 'application/json;charset=UTF-8',
+		// 		"Access-Control-Allow-Origin": "*",
+		// 		'accept': 'application/json',
+        //         'accept-language': 'en_US',
+        //         'content-type': 'application/x-www-form-urlencoded'
+		// 	}
+		//   };
+		// axios.request({
+		// 	method:'post',
+		// 	url:'http://13.229.172.162/vbpapi/users/adduser',
+		// 	data: addUser,
+		// 	axiosConfig
+		// }).then(response => {
+		// 	this.setState({open: false, modal: false});
+		// 	const payload = {
+		// 		firstname: this.state.firstname,
+		// 		lastname: this.state.lastname,
+		// 		access_type: this.state.access_type,
+		// 		role: this.state.role,
+		// 		allroles: this.state.roles,
+		// 		head: this.state.direct_head,
+		// 		allheads: this.state.heads,
+		// 		department: this.state.department,
+		// 		email: this.state.email,
+		// 		hand_over_date: this.state.hand_over_date
+		// 	};
+		// 	this.getDataUsers();
+		// 	axios.post('http://localhost:3000/users', payload);
+		// }).catch(err => console.log(err));
 	}
 
 	componentDidMount() {
 
 		  // Initialize Firebase
-		  var config = {
-			apiKey: "AIzaSyA92xFCSEknowHMXiWBcz1OS8TdV-pK_iA",
-			authDomain: "vbpproject-33765.firebaseapp.com",
-			databaseURL: "https://vbpproject-33765.firebaseio.com",
-			projectId: "vbpproject-33765",
-			storageBucket: "vbpproject-33765.appspot.com",
-			messagingSenderId: "131081195693"
-		  };
-		  firebase.initializeApp(config);
 		  this.getMessages();
+		  this.getUsersRealtime();
 
 		let initialClients = [];
 		let initialHeads = [];
@@ -213,7 +223,7 @@ export default class Users extends Component {
 		});
 
 		//all clients
-		fetch(`http://localhost/vbpapi/users/allclients`)
+		fetch(`http://13.229.172.162/vbpapi/users/allclients`)
 		.then(response => {
 			return response.json();
 		}).then(data => {
@@ -225,7 +235,7 @@ export default class Users extends Component {
 		});
 
 		//all heads
-		fetch(`http://localhost/vbpapi/users/allheads`)
+		fetch(`http://13.229.172.162/vbpapi/users/allheads`)
 		.then(response => {
 			return response.json();
 		}).then(data => {
@@ -237,7 +247,7 @@ export default class Users extends Component {
 		});
 
 		//all roles
-		fetch(`http://localhost/vbpapi/users/allroles`)
+		fetch(`http://13.229.172.162/vbpapi/users/allroles`)
 		.then(results => {
 			return results.json();
 		}).then(data => {
@@ -249,7 +259,7 @@ export default class Users extends Component {
 		});
 
 		let allUsers = [];
-		fetch(`http://localhost/vbpapi/users/allusers`)
+		fetch(`http://13.229.172.162/vbpapi/users/allusers`)
 		.then(response => {
 			return response.json();
 		}).then(data => {
@@ -261,11 +271,10 @@ export default class Users extends Component {
 	}
 
 	getDataUsers() {
-		fetch('http://localhost/vbpapi/users/allusers')
+		fetch('http://13.229.172.162/vbpapi/users/allusers')
 		.then(results => {
 			return results.json();
 		}).then(data => {
-			console.log(data);
 			this.setState({usersData:data});
 		});
 	}
@@ -289,7 +298,19 @@ export default class Users extends Component {
 		);
 	}
 
+	editRealAction(cell, row, enumObject, rowIndex) {
+		return (
+			<EditRealUsers cell={cell} row={row} rowIndex={rowIndex} />
+		);
+	}
+
 	getName(cell, row) {
+		return (
+			<span>{row.firstname} {row.lastname}</span>
+		);
+	}
+
+	getRTName(cell, row) {
 		return (
 			<span>{row.firstname} {row.lastname}</span>
 		);
@@ -323,7 +344,6 @@ export default class Users extends Component {
 	onSubmit = (event) => {
 		if(event.charCode === 13 && this.state.text.trim() !== "") {
 			this.writeMessageToDB(this.state.text);
-			this.setState({text: ""});
 			// console.log(this.state.text);
 		}
 	}
@@ -337,6 +357,29 @@ export default class Users extends Component {
 				newMessages.push({ id: child.key, text: message.text })
 			})
 			this.setState({ messages: newMessages})
+		})
+	}
+
+	getUsersRealtime = () => {
+		const vbpDB = firebase.database().ref("users/")
+		vbpDB.on("value", snapshot => {
+			let newUsers = []
+			snapshot.forEach(child => {
+				const user = child.val()
+				newUsers.push({ 
+					id: child.key, 
+					firstname: user.firstname,
+					lastname: user.lastname,
+					access_type: user.access_type,
+					role: user.role,
+					direct_head: user.direct_head,
+					department: user.department,
+					email: user.email,
+					hand_over_date: user.hand_over_date,
+					client: user.client,
+				})
+			})
+			this.setState({ realtimeusers: newUsers})
 		})
 	}
 
@@ -356,53 +399,116 @@ export default class Users extends Component {
 
 	renderMessages = () => {
 		return this.state.messages.map(message => (
-			<div>{message.text}</div>
+			<div key={message.id}>{message.text}</div>
 		))
 	}
 
+	renderRealtimeUsers = () => {
+		const columns = [{
+			dataField: 'id',
+			text: 'User Id',
+			hidden: true
+		  }, {
+			dataField: 'firstname',
+			text: 'Name',
+			sort: true,
+			formatter: this.getRTName
+		  }, {
+			dataField: 'access_type',
+			text: 'Access Type',
+			sort: true
+		  }, {
+			dataField: 'role',
+			text: 'Role',
+			sort: true
+		  }, {
+			dataField: 'direct_head',
+			text: 'Direct Head',
+			sort: true
+		  }, {
+			dataField: 'department',
+			text: 'Department',
+			sort: true
+		  }, {
+			dataField: 'email',
+			text: 'Email',
+			sort: true
+		  }, {
+			dataField: 'hand_over_date',
+			text: 'Handover Date',
+			sort: true
+		  }, {
+			dataField: 'client',
+			text: 'Client',
+			sort: true
+		  }, {
+			dataField: 'id',
+			text: 'Action',
+			formatter: this.editRealAction
+		}];
+		  
+		const defaultSorted = [{
+			dataField: 'firstname',
+			order: 'asc'
+		}];
+
+		return (
+			<BootstrapTable
+				bootstrap4
+				keyField="id"
+				data={ this.state.realtimeusers }
+				columns={ columns }
+				defaultSorted={ defaultSorted } 
+				pagination={ paginationFactory(options) }
+				noDataIndication={ 'no results found' }
+			/>
+		)
+
+	}
+
     render() {
-		const columns = [
-			{
-				dataField: 'firstname',
-				text: 'Name',
-				sort: true,
-				formatter: this.getName
-			},
-			{
-				dataField: 'access_type',
-				text: 'Access Type',
-				sort: true,
-				editor: {
-					type: Type.SELECT,
-					options: accessTypes
-				}
-			},
-			{
-				dataField: 'role',
-				text: 'Role',
-				sort: true,
-			},
-			{
-				dataField: 'direct_head',
-				text: 'Direct Head',
-				sort: true,
-			},
-			{
-				dataField: 'client',
-				text: 'Client',
-				sort: true,
-			},
-			{
-				dataField: 'hand_over_date',
-				text: 'Handover Date',
-				sort: true,
-			},
-			{
-				dataField: 'id',
-				text: 'Action',
-				formatter: this.editAction
-			}
-		];
+		// const columns = [
+		// 	{
+		// 		dataField: 'firstname',
+		// 		text: 'Name',
+		// 		sort: true,
+		// 		formatter: this.getName
+		// 	},
+		// 	{
+		// 		dataField: 'access_type',
+		// 		text: 'Access Type',
+		// 		sort: true,
+		// 		editor: {
+		// 			type: Type.SELECT,
+		// 			options: accessTypes
+		// 		}
+		// 	},
+		// 	{
+		// 		dataField: 'role',
+		// 		text: 'Role',
+		// 		sort: true,
+		// 	},
+		// 	{
+		// 		dataField: 'direct_head',
+		// 		text: 'Direct Head',
+		// 		sort: true,
+		// 	},
+		// 	{
+		// 		dataField: 'client',
+		// 		text: 'Client',
+		// 		sort: true,
+		// 	},
+		// 	{
+		// 		dataField: 'hand_over_date',
+		// 		text: 'Handover Date',
+		// 		sort: true,
+		// 	},
+		// 	{
+		// 		dataField: 'id',
+		// 		text: 'Action',
+		// 		formatter: this.editAction
+		// 	}
+		// ];
 		const { selectedOption, selectedOptionHead, selectedOptionRole } = this.state;
         return (
 			<div>
@@ -417,13 +523,13 @@ export default class Users extends Component {
 								</div>
 							</div>
 						</div><br />
-						{this.renderMessages()}
+						{/* {this.renderMessages()} */}
 						<section className="no-padding-top">
 							<div className="container-fluid">
 								<div className="row Aleft">
 									<div className='col-lg-12'>
 									
-										<TextField
+										{/* <TextField
 											id="standard-name"
 											label="Type Your Message"
 											placeholder="type something"
@@ -431,9 +537,12 @@ export default class Users extends Component {
 											onChange={e => this.setState({ text: e.target.value})}
 											onKeyPress={this.onSubmit}
 											fullWidth
-										/>
+										/> */}
 										<div className="block margin-bottom-sm">
-										<ToolkitProvider
+
+										{this.renderRealtimeUsers()}
+
+										{/* <ToolkitProvider
 											keyField="id"
 											data={ this.state.usersData }
 											columns={ columns }
@@ -454,15 +563,15 @@ export default class Users extends Component {
 													filter={ filterFactory() }
 													{ ...props.baseProps }
 													></BootstrapTable>
-													<div>
+													<div> */}
 														{/* <CSVLink filename={"users.csv"} data={this.state.dataSet3} headers={headers}>
 															<img src={CsvIcon} className="img-responsive avatar" alt="logo" className="imgExportCSV2"/>
 														</CSVLink> */}
-													</div>
+													{/* </div>
 												</div>
 												)
 											}
-										</ToolkitProvider>
+										</ToolkitProvider> */}
 										</div>
 									</div>
 								</div>
