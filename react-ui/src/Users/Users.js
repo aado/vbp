@@ -2,19 +2,13 @@ import React, { Component } from 'react';
 // import axios from 'axios';
 import Pusher from 'pusher-js';
 import Select from 'react-select';
-// import { CSVLink } from 'react-csv';
-// import TextField from '@material-ui/core/TextField';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
-// import filterFactory from 'react-bootstrap-table2-filter';
-// import { Type } from 'react-bootstrap-table2-editor';
-// import { Search } from 'react-bootstrap-table2-toolkit'; //ToolkitProvider, 
 import { Modal, ModalHeader, ModalBody, Button, FormGroup, Label, Input, Row, Col, Form } from 'reactstrap';
 import EditUsers from './EditUsers';
 import EditRealUsers from './EditRealUsers';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-// import firebase from 'firebase';
 
 import app from "../base";
 
