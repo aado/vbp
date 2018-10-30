@@ -9,12 +9,6 @@ export default class Header extends Component {
 		super(props);
 		this.state = { username: null };
 	  }
-	
-	componentDidMount() {
-	// fetch('/api/getUsername')
-	// 	.then(res => res.json())
-	// 	.then(user => this.setState({ username: user.username }));
-	}
     
 render() {
     return (
