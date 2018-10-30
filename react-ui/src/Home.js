@@ -1,8 +1,14 @@
 import React from "react";
+import Header from './Users/components/Header';
+import Sidebar from './Users/components/Sidebar';
 
 const Home = () => {
     return (
-        <h1>Home</h1>
+        <div>
+            <Header/>
+            <Sidebar/>
+        <h1>Adovin Home</h1>
+        </div>
     )
 }
 
