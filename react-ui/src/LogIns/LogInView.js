@@ -2,7 +2,7 @@ import React from "react";
 
 const LogInView = ({ onSubmit }) => {
   return (
-	<div className="col-4'>
+	<div className="col-4">
 		<h1>Login to Adovin</h1>
 		<form onSubmit={onSubmit}>
 			<div className="form-group">
