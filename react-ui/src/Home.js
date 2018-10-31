@@ -1,13 +1,15 @@
 import React from "react";
-import Header from './Users/components/Header';
-import Sidebar from './Users/components/Sidebar';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import PortfolioContent from './PortfolioContent';
+import './App.css';
 
 const Home = () => {
     return (
         <div>
             <Header/>
-            <Sidebar/>
-        <h1>Adovin Home</h1>
+                <PortfolioContent />
+            <Footer />
         </div>
     )
 }

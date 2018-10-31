@@ -21,19 +21,6 @@ const socket = new Pusher('223aca0f0c8175acf4b3', {
 	encrypted: true
 });
 
-
-// const config = {
-// 	apiKey: "AIzaSyA92xFCSEknowHMXiWBcz1OS8TdV-pK_iA",
-// 	authDomain: "vbpproject-33765.firebaseapp.com",
-// 	databaseURL: "https://vbpproject-33765.firebaseio.com",
-// 	projectId: "vbpproject-33765",
-// 	storageBucket: "vbpproject-33765.appspot.com",
-// 	messagingSenderId: "131081195693"
-//   };
-
-//   firebase.initializeApp(config);
-// const { SearchBar } = Search;
-
 const accessTypes = [
 	{
 		value: '',
@@ -100,15 +87,6 @@ const department = [
 	}
 ];
 
-// const headers = [
-// 	{label: 'Name', key: 'name'},
-//   ];
-
-// const defaultSorted = [{
-// 	dataField: 'firstname',
-// 	order: 'asc'
-// }];
-
 const customTotal = (from, to, size) => (
 	<span className="react-bootstrap-table-pagination-total">
 	  Showing { from } to { to } of { size } Results
@@ -169,37 +147,6 @@ export default class Users extends Component {
 		.ref("users/")
 		.push( addUser )
 		this.setState({modal: false});
-		// let axiosConfig = {
-		// 	headers: {
-		// 		'Content-Type': 'application/json;charset=UTF-8',
-		// 		"Access-Control-Allow-Origin": "*",
-		// 		'accept': 'application/json',
-        //         'accept-language': 'en_US',
-        //         'content-type': 'application/x-www-form-urlencoded'
-		// 	}
-		//   };
-		// axios.request({
-		// 	method:'post',
-		// 	url:'http://13.229.172.162/vbpapi/users/adduser',
-		// 	data: addUser,
-		// 	axiosConfig
-		// }).then(response => {
-		// 	this.setState({open: false, modal: false});
-		// 	const payload = {
-		// 		firstname: this.state.firstname,
-		// 		lastname: this.state.lastname,
-		// 		access_type: this.state.access_type,
-		// 		role: this.state.role,
-		// 		allroles: this.state.roles,
-		// 		head: this.state.direct_head,
-		// 		allheads: this.state.heads,
-		// 		department: this.state.department,
-		// 		email: this.state.email,
-		// 		hand_over_date: this.state.hand_over_date
-		// 	};
-		// 	this.getDataUsers();
-		// 	axios.post('http://localhost:3000/users', payload);
-		// }).catch(err => console.log(err));
 	}
 
 	componentDidMount() {
@@ -208,62 +155,7 @@ export default class Users extends Component {
 		  this.getMessages();
 		  this.getUsersRealtime();
 
-		let initialClients = [];
-		let initialHeads = [];
-		let initialRoles = [];
 		
-		this.getDataUsers();
-		const channel = socket.subscribe('user');
-		channel.bind('users', (data) => {
-			this.setState({ realUsers: [...this.state.realUsers, data]});
-		});
-
-		//all clients
-		fetch(`http://13.229.172.162/vbpapi/users/allclients`)
-		.then(response => {
-			return response.json();
-		}).then(data => {
-			initialClients = data.map(suggestion => ({
-				value: suggestion.id,
-				label: suggestion.name,
-			}));
-			this.setState({clients: initialClients});
-		});
-
-		//all heads
-		fetch(`http://13.229.172.162/vbpapi/users/allheads`)
-		.then(response => {
-			return response.json();
-		}).then(data => {
-			initialHeads = data.map(heads => ({
-				value: heads.id,
-				label: heads.name,
-			}));
-			this.setState({heads: initialHeads});
-		});
-
-		//all roles
-		fetch(`http://13.229.172.162/vbpapi/users/allroles`)
-		.then(results => {
-			return results.json();
-		}).then(data => {
-			initialRoles = data.map(role => ({
-				value: role.id,
-				label: role.name,
-			}));
-			this.setState({roles: initialRoles});
-		});
-
-		let allUsers = [];
-		fetch(`http://13.229.172.162/vbpapi/users/allusers`)
-		.then(response => {
-			return response.json();
-		}).then(data => {
-			allUsers = data.map(user => ({
-				name: user.firstname+' '+user.lastname
-			}));
-			this.setState({dataSet3: allUsers});
-		});
 	}
 
 	getDataUsers() {

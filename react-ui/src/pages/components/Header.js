@@ -80,7 +80,7 @@ render() {
                 <div className="list-inline-item logout">
                     <div className="sidebar-header d-flex align-items-center">
                         <div className="avatar" style={{right: '65px',position: 'absolute'}}>
-                            <span style={{'color':'#95C53D'}} id="userName" style={{marginRight: '5px'}}></span>
+                            <span style={{'color':'#95C53D'}} id="userName"></span>
                             <Button title="logout" onClick={() => this.signOutUser()} >logout</Button>
                         </div>
                     </div>

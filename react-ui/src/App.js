@@ -5,6 +5,8 @@ import app from "./base";
 
 import Users from './pages/Users';
 import Home from './Home';
+import About from './About';
+import Contact from './Contact';
 import Login from './LogIns';
 import Signups from './Signups';
 import PrivateRoute from './PrivateRoute';
@@ -73,6 +75,8 @@ class App extends Component {
 				<Router>
 					<div>
 						<PrivateRoute exact path="/" component={Home} authenticated={authenticated} />
+						<PrivateRoute exact path="/about" component={About} authenticated={authenticated} />
+						<PrivateRoute exact path="/contact" component={Contact} authenticated={authenticated} />
 						<Route exact path="/login" component={Login} />
 						<Route exact path="/signup" component={Signups} />
 						<PrivateRoute path="/users" exact component={Users} authenticated={authenticated}/>

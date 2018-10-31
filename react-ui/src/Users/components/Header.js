@@ -37,7 +37,7 @@ render() {
                 <div className="list-inline-item logout">
                     <div className="sidebar-header d-flex align-items-center">
                         <div className="avatar" style={{right: '65px',position: 'absolute'}}>
-                            <img src="https://d19m59y37dris4.cloudfront.net/dark-admin/1-4-4/img/avatar-6.jpg" alt="..." className="img-fluid rounded-circle" style={{'height': '20px'}}/>&nbsp;<span style={{'color':'#95C53D'}}>{this.state.username}</span>
+                            {/* <img src="https://d19m59y37dris4.cloudfront.net/dark-admin/1-4-4/img/avatar-6.jpg" alt="..." className="img-fluid rounded-circle" style={{'height': '20px'}}/>&nbsp;<span style={{'color':'#95C53D'}}>{this.state.username}</span> */}
                         </div><Link id="logout" to="/login" className="nav-link"><i className="icon-logout"></i></Link>
                     </div>
                    
