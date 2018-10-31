@@ -21,13 +21,13 @@ const PortfolioContact = () => {
                             <h4><strong>Get in Touch</strong></h4>
                             <form>
                                 <div className="form-group">
-                                    <input type="text" class="form-control" name="" value="" placeholder="Name" />
+                                    <input type="text" className="form-control" name="" value="" placeholder="Name" />
                                 </div>
                                 <div className="form-group">
-                                    <input type="email" class="form-control" name="" value="" placeholder="E-mail" />
+                                    <input type="email" className="form-control" name="" value="" placeholder="E-mail" />
                                 </div>
                                 <div className="form-group">
-                                    <input type="tel" class="form-control" name="" value="" placeholder="Phone" />
+                                    <input type="tel" className="form-control" name="" value="" placeholder="Phone" />
                                 </div>
                                 <div className="form-group">
                                     <textarea className="form-control" name="" rows="3" placeholder="Message"></textarea>
