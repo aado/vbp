@@ -41,7 +41,7 @@ render() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarResponsive">
-            <ul className="navbar-nav ml-auto">
+            <ul className="navbar-nav ml-auto" style={{float: 'right'}}>
               <li className="nav-item active">
                 <Link id="about" to="/" className="nav-link">Home <span className="sr-only">(current)</span></Link>
               </li>
