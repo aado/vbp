@@ -1,13 +1,13 @@
 import React from "react";
 import Header from './components/Header';
 import Footer from './components/Footer';
-import PortfolioContent from "./PortfolioContent";
+import PortfolioContact from "./PortfolioContact";
 
 const Contact = () => {
     return (
       <div>
 		<Header pageName="Contact" activePage="active"/>
-		<PortfolioContent/>
+			<PortfolioContact/>
 		<Footer />
       </div>
     )

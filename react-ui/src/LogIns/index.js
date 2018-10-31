@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LogInView from "./LogInView";
 import { withRouter } from "react-router";
+import '../components/signin.css'
 import app from "../base";
 
 class LogInContainer extends Component {

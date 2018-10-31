@@ -11,9 +11,9 @@ const PortfolioContent = () => {
                         <Link to="/home"><img className="card-img-top" src="http://placehold.it/700x400" alt="" /></Link>
                         <div className="card-body">
                             <h4 className="card-title">
-                            <Link to="/home">Project One</Link>
+                            <Link to="/home">NSU ELEARNING</Link>
                             </h4>
-                            <p className="card-text">Lorem ipsum dolor sit amet,  repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+                            <p className="card-text">ELEARNING Consist of Grading System, Elearning Articles Upload and Download</p>
                         </div>
                     </div>
                 </div>
@@ -22,9 +22,9 @@ const PortfolioContent = () => {
                         <Link to="/home"><img className="card-img-top" src="http://placehold.it/700x400" alt="" /></Link>
                         <div className="card-body">
                             <h4 className="card-title">
-                                <Link to="/home">Project One</Link>
+                                <Link to="/home">VBP Time and Task Management</Link>
                             </h4>
-                            <p className="card-text">Lorem ipsum dolor sit amet, consequatur ut esse! Commodi ea consequatur accusantium, beatae qui deserunt tenetur ipsa.</p>
+                            <p className="card-text">Monitor Employee Time and Task in Realtime</p>
                         </div>
                     </div>
                 </div>
