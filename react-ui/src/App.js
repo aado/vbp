@@ -8,7 +8,7 @@ import Home from './Home';
 import About from './About';
 import Contact from './Contact';
 import Login from './LogIns';
-import Signups from './SignUps';
+import SignUps from './Signups';
 import PrivateRoute from './PrivateRoute';
 
 class App extends Component {
@@ -78,7 +78,7 @@ class App extends Component {
 						<PrivateRoute exact path="/about" component={About} authenticated={authenticated} />
 						<PrivateRoute exact path="/contact" component={Contact} authenticated={authenticated} />
 						<Route exact path="/login" component={Login} />
-						<Route exact path="/signup" component={Signups} />
+						<Route exact path="/signup" component={SignUps} />
 						<PrivateRoute path="/users" exact component={Users} authenticated={authenticated}/>
 					</div>
 				</Router>
