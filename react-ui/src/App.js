@@ -8,7 +8,7 @@ import Home from './Home';
 import About from './About';
 import Contact from './Contact';
 import Login from './LogIns';
-import Signups from './Signups';
+import Signups from './SignUps';
 import PrivateRoute from './PrivateRoute';
 
 class App extends Component {

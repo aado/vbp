@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const LogInView = ({ onSubmit }) => {
 	return (
@@ -10,6 +11,7 @@ const LogInView = ({ onSubmit }) => {
 				<label htmlFor="inputPassword" className="sr-only">Password</label>
 				<input type="password" id="inputPassword" name="password" className="form-control" placeholder="Password" required />
 				<button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+				Not Registered? <Link to="/signup">Register here</Link>
 			</form>
 		</div>
 	);
