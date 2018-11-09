@@ -4,16 +4,6 @@ import template from './templateicon.png';
 import users from './usersicon.png';
 
 export default class Sidebar extends Component {
-	constructor(props) {
-		super(props);
-		this.state = { username: null };
-	  }
-	
-	componentDidMount() {
-	// fetch('/api/getUsername')
-	// 	.then(res => res.json())
-	// 	.then(user => this.setState({ username: user.username }));
-	}
     render () {
         return (
 			<nav id="sidebar" style={{fontSize: '12px', marginTop: '75px'}}>
