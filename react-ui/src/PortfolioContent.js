@@ -6,7 +6,7 @@ import nativecamp from './images/nativecamp.png';
 
 const PortfolioContent = () => {
     return (
-        <div className="container" style={{marginTop: '80px'}}>
+        <div className="container">
             <h1>Portfolio</h1>
             <div className="row">
                 <div className="col-lg-3 col-md-4 col-sm-6 portfolio-item">
