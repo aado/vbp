@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Pusher from 'pusher-js';
 import Select from 'react-select';
 // import { CSVLink } from 'react-csv';
-// import TextField from '@material-ui/core/TextField';
+import TextField from '@material-ui/core/TextField';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 // import filterFactory from 'react-bootstrap-table2-filter';
@@ -12,8 +12,8 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import { Modal, ModalHeader, ModalBody, Button, FormGroup, Label, Input, Row, Col, Form } from 'reactstrap';
 import EditUsers from './EditUsers';
 import EditRealUsers from './EditRealUsers';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
+// import Header from './components/Header';
+// import Sidebar from './components/Sidebar';
 // import firebase from 'firebase';
 
 import app from "../base";
@@ -213,72 +213,72 @@ export default class Users extends Component {
 		  this.getMessages();
 		  this.getUsersRealtime();
 
-		let initialClients = [];
-		let initialHeads = [];
-		let initialRoles = [];
+		// let initialClients = [];
+		// let initialHeads = [];
+		// let initialRoles = [];
 		
-		this.getDataUsers();
+		// this.getDataUsers();
 		const channel = socket.subscribe('user');
 		channel.bind('users', (data) => {
 			this.setState({ realUsers: [...this.state.realUsers, data]});
 		});
 
 		//all clients
-		fetch(`http://13.229.172.162/vbpapi/users/allclients`)
-		.then(response => {
-			return response.json();
-		}).then(data => {
-			initialClients = data.map(suggestion => ({
-				value: suggestion.id,
-				label: suggestion.name,
-			}));
-			this.setState({clients: initialClients});
-		});
+		// fetch(`http://13.229.172.162/vbpapi/users/allclients`)
+		// .then(response => {
+		// 	return response.json();
+		// }).then(data => {
+		// 	initialClients = data.map(suggestion => ({
+		// 		value: suggestion.id,
+		// 		label: suggestion.name,
+		// 	}));
+		// 	this.setState({clients: initialClients});
+		// });
 
 		//all heads
-		fetch(`http://13.229.172.162/vbpapi/users/allheads`)
-		.then(response => {
-			return response.json();
-		}).then(data => {
-			initialHeads = data.map(heads => ({
-				value: heads.id,
-				label: heads.name,
-			}));
-			this.setState({heads: initialHeads});
-		});
+		// fetch(`http://13.229.172.162/vbpapi/users/allheads`)
+		// .then(response => {
+		// 	return response.json();
+		// }).then(data => {
+		// 	initialHeads = data.map(heads => ({
+		// 		value: heads.id,
+		// 		label: heads.name,
+		// 	}));
+		// 	this.setState({heads: initialHeads});
+		// });
 
 		//all roles
-		fetch(`http://13.229.172.162/vbpapi/users/allroles`)
-		.then(results => {
-			return results.json();
-		}).then(data => {
-			initialRoles = data.map(role => ({
-				value: role.id,
-				label: role.name,
-			}));
-			this.setState({roles: initialRoles});
-		});
+		// fetch(`http://13.229.172.162/vbpapi/users/allroles`)
+		// .then(results => {
+		// 	return results.json();
+		// }).then(data => {
+		// 	initialRoles = data.map(role => ({
+		// 		value: role.id,
+		// 		label: role.name,
+		// 	}));
+		// 	this.setState({roles: initialRoles});
+		// });
 
-		let allUsers = [];
-		fetch(`http://13.229.172.162/vbpapi/users/allusers`)
-		.then(response => {
-			return response.json();
-		}).then(data => {
-			allUsers = data.map(user => ({
-				name: user.firstname+' '+user.lastname
-			}));
-			this.setState({dataSet3: allUsers});
-		});
+		// let allUsers = [];
+		// fetch(`http://13.229.172.162/vbpapi/users/allusers`)
+		// .then(response => {
+		// 	return response.json();
+		// }).then(data => {
+		// 	allUsers = data.map(user => ({
+		// 		name: user.firstname+' '+user.lastname
+		// 	}));
+		// 	this.setState({dataSet3: allUsers});
+		// });
 	}
 
-	getDataUsers() {
-		fetch('http://13.229.172.162/vbpapi/users/allusers')
-		.then(results => {
-			return results.json();
-		}).then(data => {
-			this.setState({usersData:data});
-		});
-	}
+	// getDataUsers() {
+	// 	fetch('http://13.229.172.162/vbpapi/users/allusers')
+	// 	.then(results => {
+	// 		return results.json();
+	// 	}).then(data => {
+	// 		this.setState({usersData:data});
+	// 	});
+	// }
 
 	
 	handleChange = (selectedOption) => {
@@ -468,54 +468,22 @@ export default class Users extends Component {
 	}
 
     render() {
-		// const columns = [
-		// 	{
-		// 		dataField: 'firstname',
-		// 		text: 'Name',
-		// 		sort: true,
-		// 		formatter: this.getName
-		// 	},
-		// 	{
-		// 		dataField: 'access_type',
-		// 		text: 'Access Type',
-		// 		sort: true,
-		// 		editor: {
-		// 			type: Type.SELECT,
-		// 			options: accessTypes
-		// 		}
-		// 	},
-		// 	{
-		// 		dataField: 'role',
-		// 		text: 'Role',
-		// 		sort: true,
-		// 	},
-		// 	{
-		// 		dataField: 'direct_head',
-		// 		text: 'Direct Head',
-		// 		sort: true,
-		// 	},
-		// 	{
-		// 		dataField: 'client',
-		// 		text: 'Client',
-		// 		sort: true,
-		// 	},
-		// 	{
-		// 		dataField: 'hand_over_date',
-		// 		text: 'Handover Date',
-		// 		sort: true,
-		// 	},
-		// 	{
-		// 		dataField: 'id',
-		// 		text: 'Action',
-		// 		formatter: this.editAction
-		// 	}
-		// ];
 		const { selectedOption, selectedOptionHead, selectedOptionRole } = this.state;
         return (
 			<div>
-				<Header />
+				<br />
+				{/* <Header /> */}
+				<TextField
+					label="Type Your Message"
+					placeholder="type something"
+					value={this.state.name}
+					onChange={e => this.setState({ text: e.target.value})}
+					onKeyPress={this.onSubmit}
+					// fullWidth
+				/>
+				{this.renderMessages()}
 				<div className="d-flex align-items-stretch">
-				<Sidebar />
+				{/* <Sidebar /> */}
 					<div className="page-content">
 						<div className="page-header  no-margin-bottom Aleft">
 							<div className="container-fluid">
@@ -524,21 +492,12 @@ export default class Users extends Component {
 								</div>
 							</div>
 						</div><br />
-						{/* {this.renderMessages()} */}
 						<section className="no-padding-top">
 							<div className="container-fluid">
 								<div className="row Aleft">
 									<div className='col-lg-12'>
 									
-										{/* <TextField
-											id="standard-name"
-											label="Type Your Message"
-											placeholder="type something"
-											value={this.state.name}
-											onChange={e => this.setState({ text: e.target.value})}
-											onKeyPress={this.onSubmit}
-											fullWidth
-										/> */}
+										
 										<div className="block margin-bottom-sm">
 
 										{this.renderRealtimeUsers()}

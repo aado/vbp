@@ -43,13 +43,17 @@ render() {
           <div className="collapse navbar-collapse" id="navbarResponsive">
             <ul className="navbar-nav ml-auto" style={{float: 'right'}}>
               <li className="nav-item active">
-                <Link id="about" to="/" className="nav-link">Home <span className="sr-only">(current)</span></Link>
+                <Link id="about" to="/" className="nav-link">Home</Link>
+                {/* <Link id="about" to="/" className="nav-link">Home <span className="sr-only">(current)</span></Link> */}
               </li>
               <li className="nav-item">
                 <Link id="about" to="/about" className="nav-link">About</Link>
               </li>
               <li className="nav-item">
                 <Link id="about" to="/contact" className="nav-link">Contact</Link>
+              </li>
+              <li className="nav-item">
+                <Link id="about" to="/realworld" className="nav-link">RealWorld</Link>
               </li>
               
             </ul>

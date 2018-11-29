@@ -9,6 +9,7 @@ import About from './About';
 import Contact from './Contact';
 import Login from './LogIns';
 import SignUps from './Signups';
+import Realworld from './Realworld';
 import PrivateRoute from './PrivateRoute';
 
 class App extends Component {
@@ -77,7 +78,9 @@ class App extends Component {
 						<PrivateRoute exact path="/" component={Home} authenticated={authenticated} />
 						<PrivateRoute exact path="/about" component={About} authenticated={authenticated} />
 						<PrivateRoute exact path="/contact" component={Contact} authenticated={authenticated} />
+						<PrivateRoute exact path="/realworld" component={Realworld} authenticated={authenticated} />
 						<Route exact path="/login" component={Login} />
+						{/* <Route exact path="/landing" component={Landing} /> */}
 						<Route exact path="/signup" component={SignUps} />
 						<PrivateRoute path="/users" exact component={Users} authenticated={authenticated}/>
 					</div>
