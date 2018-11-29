@@ -36,3 +36,10 @@
   background-color: #f5f5f5;
   color: black;
 }
+
+.card-img-top {
+  width: 100% !important;
+  border-top-left-radius: calc(.25rem - 1px) !important;
+  border-top-right-radius: calc(.25rem - 1px) !important;
+  height: 200px !important;
+}

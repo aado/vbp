@@ -9,11 +9,7 @@ export default class Sidebar extends Component {
 		this.state = { username: null };
 	  }
 	
-	componentDidMount() {
-	// fetch('/api/getUsername')
-	// 	.then(res => res.json())
-	// 	.then(user => this.setState({ username: user.username }));
-	}
+	componentDidMount() {}
     render () {
         return (
 			<nav id="sidebar" style={{fontSize: '12px', marginTop: '75px'}}>
