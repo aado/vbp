@@ -11,7 +11,7 @@ const SignUpView = ({ onSubmit }) => {
 			<label htmlFor="inputPassword" className="sr-only">Password</label>
 			<input type="password" id="inputPassword" name="password" className="form-control" placeholder="Password" required />
 			<button className="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
-			Already Registered? <Link to="/login">Sign In</Link>
+			<small>Already Registered? <Link to="/login">Sign In</Link></small>
 		</form>
 	</div>
   );
