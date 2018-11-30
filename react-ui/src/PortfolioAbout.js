@@ -5,7 +5,7 @@ import './App.css';
 const PortfolioAbout = () => {
     return (
         <div className="container">
-            <h1>About Developers</h1>
+            <h1>About Developer</h1>
             <div className="row" style={{'paddingLeft': '20%'}}>
                 <img src={devimages} alt="developer" style={{height: '300px'}}/>&nbsp;
                 <div className="col-sm-4 social-buttons">
