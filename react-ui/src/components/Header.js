@@ -49,11 +49,11 @@ export default class Header extends Component {
 								<Link id="about" to="/about" className="nav-link">About</Link>
 							</li>
 							<li className="nav-item">
-								<Link id="about" to="/contact" className="nav-link">Contact</Link>
+								<Link id="about" to="/contact" className="nav-link">Chat</Link>
 							</li>
-							<li className="nav-item">
+							{/* <li className="nav-item">
 								<Link id="about" to="/realworld" className="nav-link">Users</Link>
-							</li>
+							</li> */}
 						</ul>
 					</div>
 					<div>
