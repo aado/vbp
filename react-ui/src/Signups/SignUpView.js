@@ -5,7 +5,7 @@ const SignUpView = ({ onSubmit }) => {
   return (
 	<div>
 		<form onSubmit={onSubmit} className="form-signin">
-			<h1 className="h3 mb-3 font-weight-normal">Create account</h1>
+			<h1 className="h3 mb-3 font-weight-normal" style={{'fontFamily': 'Impact, Charcoal, sans-serif' }}>Create account</h1>
 			<label htmlFor="inputEmail" className="sr-only">Email address</label>
 			<input type="email" name="email" id="inputEmail" className="form-control" placeholder="Email address" required autoFocus />
 			<label htmlFor="inputPassword" className="sr-only">Password</label>
