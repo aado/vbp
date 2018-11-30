@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'reactstrap';
+// import { Button } from 'reactstrap';
 import app from "../base";
 
 export default class Header extends Component {
@@ -57,8 +57,8 @@ export default class Header extends Component {
 						</ul>
 					</div>
 					<div>
-						<span id="userName" style={{color:'white'}}></span>&nbsp;
-						<Button title="logout" onClick={() => this.signOutUser()} >logout</Button>
+						<span id="userName" style={{color:'white'}}></span>&nbsp; |
+						<a title="logout" style={{cursor:'pointer', color: 'white'}} onClick={() => this.signOutUser()} >Logout</a>
 					</div>
 				</div>
 			</nav>
