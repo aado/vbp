@@ -43,3 +43,11 @@
   border-top-right-radius: calc(.25rem - 1px) !important;
   height: 200px !important;
 }
+
+.navbar {
+    position: relative;
+    min-height: 39px;
+    margin-bottom: -13px;
+    border: 1px solid transparent;
+    border-radius: 0px;
+}

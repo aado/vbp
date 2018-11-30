@@ -7,7 +7,7 @@ export default class Sidebar extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { username: null };
-	  }
+	}
 	
 	componentDidMount() {}
     render () {
