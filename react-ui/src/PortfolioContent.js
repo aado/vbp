@@ -48,10 +48,10 @@ const PortfolioContent = () => {
                 </div>
                 <div className="col-lg-3 col-md-4 col-sm-6 portfolio-item">
                     <div className="card h-100">
-                        <a href="http://nivlaoda.freecluster.eu/ciictonline/login"><img className="card-img-top" src={helpdesk} alt="" /></a>
+                        <a href="https://gitlab.com/vinzadz1987/nsuhelpdesk"><img className="card-img-top" src={helpdesk} alt="" /></a>
                         <div className="card-body">
                             <h4 className="card-title">
-                                <a href="https://nativecamp.net/" rel="noopener noreferrer" target="_blank">NSU HelpDesk</a>
+                                <a href="https://gitlab.com/vinzadz1987/nsuhelpdesk" rel="noopener noreferrer" target="_blank">NSU HelpDesk</a>
                             </h4>
                             <p className="card-text">Provide technical assistance and support for incoming queries and issues related to computer systems, software, and hardware. Respond to queries either in person or over the phone. ... Install, modify, and repair computer hardware and software.</p>
                         </div>
