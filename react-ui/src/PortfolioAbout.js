@@ -9,6 +9,7 @@ const PortfolioAbout = () => {
             <div className="row" style={{'padding-left': '20%'}}>
                 <img src={devimages} alt="developer" style={{height: '300px'}}/>&nbsp;
                 <div className="col-sm-4 social-buttons">
+                    <h1 className="text-primary" style={{'font-family': 'Impact, Charcoal, sans-serif' }}>ALVIN P. ADO</h1>
                     <a className="btn btn-block btn-social btn-facebook btn-primary" style={{ color: 'black' }} href="https://www.facebook.com/vinzadz1987">
                         <span className="fa fa-facebook"></span> Facebook
                     </a>
