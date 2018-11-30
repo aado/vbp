@@ -8,7 +8,7 @@ const LogInView = ({ onSubmit }) => {
 				<h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
 				<div>
 					<b>Test Login: </b><br/>
-					<label>email: <b>test@email.com</b></label><br/>
+					<label>email: <b>test@gmail.com</b></label><br/>
 					<label>password: <b>test123</b></label>
 				</div>
 				<label htmlFor="inputEmail" className="sr-only">Email address</label>
