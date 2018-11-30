@@ -36,7 +36,7 @@ getMessages = () => {
 
 renderMessages = () => {
     return this.state.messages.map(message => (  
-        <div className="balon1 p-2 m-0 position-relative" data-is="You - 3:20 pm">
+        <div className="balon1 p-2 m-0 position-relative" data-is="You - 3:20 pm" key={message.id}>
             <a> {message.text} </a>
         </div> 
     ))
