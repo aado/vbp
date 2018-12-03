@@ -201,3 +201,15 @@ body{
    .titlePage {
      font-family: Impact, Charcoal, sans-serif;
     }
+
+    .FixedHeightContainer
+{
+  height: 250px;
+  padding:3px; 
+}
+.ContentChat
+{
+  height:600px;
+   overflow:auto;
+    background:#fff;
+}

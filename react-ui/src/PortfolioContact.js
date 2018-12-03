@@ -84,20 +84,6 @@ render() {
 			<div className="contact-section">
 			<div className="container">
 				<form onSubmit={this.onFormAddSubmit}>
-					{/* <div className="col-md-6 form-line">
-			  			<div className="form-group">
-			  				<label htmlFor="exampleInputUsername">Your name</label>
-					    	<input type="text" ref={(e) => this.name = e} name="name" className="form-control" id="" placeholder=" Enter Name" />
-				  		</div>
-				  		<div className="form-group">
-					    	<label htmlFor="exampleInputEmail">Email Address</label>
-					    	<input type="email" ref={(e) => this.email = e} name="email" className="form-control" id="exampleInputEmail" placeholder=" Enter Email id" />
-					  	</div>	
-					  	<div className="form-group">
-					    	<label htmlFor="telephone">Mobile No.</label>
-					    	<input type="tel" className="form-control" ref={(e) => this.mobile = e} name="mobile" id="telephone" placeholder=" Enter 10-digit mobile no." />
-			  			</div>
-			  		</div> */}
 			  		<div className="col-md-12">
 			  			<div className="form-group">
 			  				<label htmlFor ="description"> Message Me</label>
@@ -116,12 +102,9 @@ render() {
                 <div className="row m-0 p-0 position-relative">
                     <div className="col-12 p-0 m-0 position-absolute">
 
-                        <div className="bg-sohbet border-0 m-0 p-0">
-                            <div id="sohbet" className="card border-0 m-0 p-0 position-relative bg-transparent">
-
-                                
+                        <div className="bg-sohbet border-0 m-0 p-0 FixedHeightContainer">
+                            <div id="sohbet" className="card border-0 m-0 p-0 position-relative bg-transparent ContentChat">
                                 {this.renderMessages()}
-
                             </div>
                         </div>
                     </div>
