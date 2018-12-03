@@ -16,9 +16,6 @@ constructor(props) {
     };
 }
 
-
-
-
 componentDidMount() {
     // Initialize Firebase
     this.getMessages();

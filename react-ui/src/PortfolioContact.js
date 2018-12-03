@@ -14,9 +14,6 @@ constructor(props) {
     };
 }
 
-
-
-
 componentDidMount() {
     // Initialize Firebase
     this.getMessages();
@@ -66,8 +63,8 @@ getMessages = () => {
 onFormAddSubmit = (e) => {
     e.preventDefault();
     if(this.message.value.trim() !== "") {
-        console.log(this.message.value);
         this.writeMessageToDB(this.message.value);
+        document.getElementById('message').value = ''
     }
 }
 
@@ -87,7 +84,7 @@ render() {
 			  		<div className="col-md-12">
 			  			<div className="form-group">
 			  				<label htmlFor ="description"> Message Me</label>
-			  			 	<textarea  className="form-control" ref={(e) => this.message = e} name="message" id="description" placeholder="Enter Your Message"></textarea>
+			  			 	<textarea  className="form-control" ref={(e) => this.message = e} name="message" id="message" placeholder="Enter Your Message"></textarea>
 			  			</div>
 			  			<div>
 			  			<button type="submit" className="btn btn-default submit" style={{marginRight: '20px'}}><i className="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
@@ -102,7 +99,7 @@ render() {
                 <div className="row m-0 p-0 position-relative">
                     <div className="col-12 p-0 m-0 position-absolute">
 
-                        <div className="bg-sohbet border-0 m-0 p-0 FixedHeightContainer">
+                        <div className="bg-sohbet border-0 m-0 p-0 ChatContatainer">
                             <div id="sohbet" className="card border-0 m-0 p-0 position-relative bg-transparent ContentChat">
                                 {this.renderMessages()}
                             </div>
