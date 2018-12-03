@@ -32,7 +32,6 @@ export default class Header extends Component {
 	}
 
 	render() {
-		// const { pageName } = this.props;
 		return (
 			<nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 				<div className="container">

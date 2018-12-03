@@ -19,21 +19,21 @@ componentDidMount() {
     this.getMessages();
 }
 
-getMessages = () => {
-    const messageDB = app.database().ref("messages/")
-    messageDB.on("value", snapshot => {
-        let newMessages = []
-        snapshot.forEach(child => {
-            const message = child.val()
-            newMessages.push({ id: child.key, text: message.text })
-        })
-        this.setState({ messages: newMessages})
-    })
-}
+// getMessages = () => {
+//     const messageDB = app.database().ref("messages/")
+//     messageDB.on("value", snapshot => {
+//         let newMessages = []
+//         snapshot.forEach(child => {
+//             const message = child.val()
+//             newMessages.push({ id: child.key, text: message.text })
+//         })
+//         this.setState({ messages: newMessages})
+//     })
+// }
 
 renderMessages = () => {
     return this.state.messages.map(message => (  
-        <div className="balon1 p-2 m-0 position-relative" data-is="You - 3:20 pm" key={message.id}>
+        <div className="balon1 p-2 m-0 position-relative" data-is={message.email+' - '+message.date} key={message.id}>
             <a> {message.text} </a>
         </div> 
     ))
@@ -44,7 +44,9 @@ writeMessageToDB = (message) => {
     .database()
     .ref("messages/")
     .push( {
-        text: message
+        text: message,
+        email: app.auth().currentUser.email,
+        date: Date()
     })
 }
 
@@ -54,14 +56,13 @@ getMessages = () => {
         let newMessages = []
         snapshot.forEach(child => {
             const message = child.val()
-            newMessages.push({ id: child.key, text: message.text })
+            newMessages.push({ id: child.key, text: message.text, email: message.email, date: message.date })
         })
         this.setState({ messages: newMessages})
     })
 }
 
 onFormAddSubmit = (e) => {
-    // e.preventDefault();
     if(e.charCode === 13 && this.state.text.trim() !== "") {
         this.writeMessageToDB(this.state.text);
         this.setState({text:''})
@@ -77,22 +78,15 @@ render() {
         <section id="contact">
 			<div className="section-content">
 				<h1 className="section-header">Get in <span className="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Touch with me</span></h1>
-				{/* <h3>Contact us</h3> */}
 			</div>
 			<div className="contact-section">
 			<div className="container">
-				{/* <form onSubmit={this.onFormAddSubmit}> */}
 			  		<div className="col-md-12">
 			  			<div className="form-group">
 			  				<label htmlFor ="description"> Message Me</label>
 			  			 	<input  className="form-control" id="message" onChange={ e => this.setState({ text: e.target.value })} value={this.state.name} onKeyPress={this.onFormAddSubmit} placeholder="Enter Your Message" />
 			  			</div>
-			  			{/* <div>
-			  			<button type="submit" className="btn btn-default submit" style={{marginRight: '20px'}}><i className="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
-			  			</div> */}
-			  			
 					</div>
-				{/* </form> */}
 			</div>
             </div>
             <br/>
