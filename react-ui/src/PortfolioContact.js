@@ -61,9 +61,10 @@ getMessages = () => {
 }
 
 onFormAddSubmit = (e) => {
-    e.preventDefault();
-    if(e.charCode === 13 && this.message.value.trim() !== "") {
-        this.writeMessageToDB(this.message.value);
+    // e.preventDefault();
+    if(e.charCode === 13 && this.state.text.trim() !== "") {
+        this.writeMessageToDB(this.state.text);
+        this.setState({text:''})
         document.getElementById('message').value = ''
     }
 }
@@ -84,7 +85,7 @@ render() {
 			  		<div className="col-md-12">
 			  			<div className="form-group">
 			  				<label htmlFor ="description"> Message Me</label>
-			  			 	<input  className="form-control" ref={(e) => this.message = e} name="message" id="message" onKeyPress={this.onFormAddSubmit} placeholder="Enter Your Message" />
+			  			 	<input  className="form-control" id="message" onChange={ e => this.setState({ text: e.target.value })} value={this.state.name} onKeyPress={this.onFormAddSubmit} placeholder="Enter Your Message" />
 			  			</div>
 			  			{/* <div>
 			  			<button type="submit" className="btn btn-default submit" style={{marginRight: '20px'}}><i className="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
