@@ -62,7 +62,7 @@ getMessages = () => {
 
 onFormAddSubmit = (e) => {
     e.preventDefault();
-    if(this.message.value.trim() !== "") {
+    if(e.charCode === 13 && this.message.value.trim() !== "") {
         this.writeMessageToDB(this.message.value);
         document.getElementById('message').value = ''
     }
@@ -80,18 +80,18 @@ render() {
 			</div>
 			<div className="contact-section">
 			<div className="container">
-				<form onSubmit={this.onFormAddSubmit}>
+				{/* <form onSubmit={this.onFormAddSubmit}> */}
 			  		<div className="col-md-12">
 			  			<div className="form-group">
 			  				<label htmlFor ="description"> Message Me</label>
-			  			 	<textarea  className="form-control" ref={(e) => this.message = e} name="message" id="message" placeholder="Enter Your Message"></textarea>
+			  			 	<input  className="form-control" ref={(e) => this.message = e} name="message" id="message" onKeyPress={this.onFormAddSubmit} placeholder="Enter Your Message" />
 			  			</div>
-			  			<div>
+			  			{/* <div>
 			  			<button type="submit" className="btn btn-default submit" style={{marginRight: '20px'}}><i className="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
-			  			</div>
+			  			</div> */}
 			  			
 					</div>
-				</form>
+				{/* </form> */}
 			</div>
             </div>
             <br/>
