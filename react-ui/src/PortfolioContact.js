@@ -19,18 +19,6 @@ componentDidMount() {
     this.getMessages();
 }
 
-// getMessages = () => {
-//     const messageDB = app.database().ref("messages/")
-//     messageDB.on("value", snapshot => {
-//         let newMessages = []
-//         snapshot.forEach(child => {
-//             const message = child.val()
-//             newMessages.push({ id: child.key, text: message.text })
-//         })
-//         this.setState({ messages: newMessages})
-//     })
-// }
-
 renderMessages = () => {
     return this.state.messages.map(message => (  
         <div className="balon1 p-2 m-0 position-relative" data-is={message.email+' - '+message.date} key={message.id}>

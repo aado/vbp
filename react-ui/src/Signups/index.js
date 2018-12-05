@@ -8,12 +8,20 @@ import SignUpView from "./SignUpView";
 class SignUpContainer extends Component {
   handleSignUp = async event => {
     event.preventDefault();
-    const { email, password } = event.target.elements;
+    const { email, password, username } = event.target.elements;
     try {
       const user = await app
-        .auth()
-        .createUserWithEmailAndPassword(email.value, password.value);
+      .auth()
+      .createUserWithEmailAndPassword(email.value, password.value);
       this.props.history.push("/");
+
+      app
+        .database()
+        .ref("users/")
+      .push( {
+        username: username.value,
+        email: email.value
+      });
       console.log(user);
     } catch (error) {
       alert(error);

@@ -355,48 +355,6 @@ export default class Users extends Component {
 	}
 
     render() {
-		// const columns = [
-		// 	{
-		// 		dataField: 'firstname',
-		// 		text: 'Name',
-		// 		sort: true,
-		// 		formatter: this.getName
-		// 	},
-		// 	{
-		// 		dataField: 'access_type',
-		// 		text: 'Access Type',
-		// 		sort: true,
-		// 		editor: {
-		// 			type: Type.SELECT,
-		// 			options: accessTypes
-		// 		}
-		// 	},
-		// 	{
-		// 		dataField: 'role',
-		// 		text: 'Role',
-		// 		sort: true,
-		// 	},
-		// 	{
-		// 		dataField: 'direct_head',
-		// 		text: 'Direct Head',
-		// 		sort: true,
-		// 	},
-		// 	{
-		// 		dataField: 'client',
-		// 		text: 'Client',
-		// 		sort: true,
-		// 	},
-		// 	{
-		// 		dataField: 'hand_over_date',
-		// 		text: 'Handover Date',
-		// 		sort: true,
-		// 	},
-		// 	{
-		// 		dataField: 'id',
-		// 		text: 'Action',
-		// 		formatter: this.editAction
-		// 	}
-		// ];
 		const { selectedOption, selectedOptionHead, selectedOptionRole } = this.state;
         return (
 			<div>
