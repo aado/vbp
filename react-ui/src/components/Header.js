@@ -41,7 +41,7 @@ export default class Header extends Component {
 					</button>
 					<div className="collapse navbar-collapse" id="navbarResponsive">
 						<ul className="navbar-nav ml-auto">
-							<li className="nav-item active">
+							<li className="nav-item">
 								<Link id="home" to="/" className="nav-link">Home</Link>
 							</li>
 							<li className="nav-item">

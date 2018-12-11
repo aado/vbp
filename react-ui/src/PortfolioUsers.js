@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import app from "./base";
 
 
-export default class PortfolioContact extends Component {
+export default class PortfolioUsers extends Component {
 
     
 constructor(props) {
@@ -11,7 +11,6 @@ constructor(props) {
     this.state = {
         text:'',
         messages: [],
-        loading: true
     };
 }
 
@@ -47,7 +46,7 @@ getMessages = () => {
             const message = child.val()
             newMessages.push({ id: child.key, text: message.text, email: message.email, date: message.date })
         })
-        this.setState({ messages: newMessages, loading: false})
+        this.setState({ messages: newMessages})
     })
 }
 
@@ -60,12 +59,6 @@ onFormAddSubmit = (e) => {
 }
 
 render() {
-    const { loading } = this.state;
-
-    if (loading) {
-        return <p>Loading..</p>;
-    }
-
     return (
         
         <div className="container">
