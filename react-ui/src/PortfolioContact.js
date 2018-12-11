@@ -72,7 +72,7 @@ render() {
 
         <section id="contact">
 			<div className="section-content">
-				<h1 className="section-header">Get in <span className="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Touch with me</span></h1>
+				<h1 className="section-header titlePage">Get in <span className="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Touch with me</span></h1>
 			</div>
 			<div className="contact-section">
 			<div className="container">
